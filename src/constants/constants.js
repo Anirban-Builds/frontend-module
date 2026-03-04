@@ -3,7 +3,6 @@ export const PROJ_GET_PATH = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/
 export const PROJ_GET_TITLE = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/fetch-titles?title=`
 export const TAGS = ['ML', 'Fullstack', 'C', 'Web3',
     'Python', 'React', 'Express', 'Node', 'MongoDB']
-// const BACKEND = 'http://localhost:8000'
 export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email`
 export const PATH_GH_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-login?code=`
 export const PATH_USER_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/login`
