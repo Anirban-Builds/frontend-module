@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect} from "react"
 import { PATH_GH_USER, PATH_USER } from "../constants/constants";
 import AsyncHandler from "../utils/AsyncHandler";
-const UserContext = createContext({ user: { cookieset: -1 }, setUser: () => {} })
+const UserContext = createContext(null)
 
 const useUser = () => useContext(UserContext)
 
@@ -66,7 +66,7 @@ useEffect(
     getUserData()
  }, [])
 
- if(loading) return <>{children}</>
+ if(loading) return null
   return (
         <UserContext.Provider value={{user, setUser}}>
         {children}
