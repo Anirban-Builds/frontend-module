@@ -27,6 +27,7 @@ const Account = () => {
     const handleLogout = AsyncHandler(async() =>{
 
         const isghuser = user.usertype[1]
+        console.log("usertype:", user.usertype, "isghuser:", isghuser)
 
         const res = await fetch(isghuser ? PATH_GH_LOGOUT : PATH_USER_LOGOUT, {
             method : "GET",
