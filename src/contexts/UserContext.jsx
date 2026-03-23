@@ -1,9 +1,9 @@
 import { useContext, createContext, useState, useEffect} from "react"
 import { PATH_GH_USER, PATH_USER } from "../constants/constants";
 import AsyncHandler from "../utils/AsyncHandler";
-const UserContext = createContext(null)
+const UserContext = createContext({ user: { cookieset: -1 }, setUser: () => {} })
 
-const useUser = ()=> useContext(UserContext)
+const useUser = () => useContext(UserContext)
 
 const UserContextWrapper = ({ children })=>{
     const[user, setUser] = useState({cookieset : -1})
