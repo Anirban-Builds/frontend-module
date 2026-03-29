@@ -7,7 +7,7 @@ const useUser = () => useContext(UserContext)
 
 const UserContextWrapper = ({ children })=>{
     const[user, setUser] = useState({cookieset : -1})
-    const[loading, setLoading] = useState(true)
+    // const[loading, setLoading] = useState(true)
 
   const getUserData = AsyncHandler(async() => {
   let userres
@@ -26,7 +26,7 @@ const UserContextWrapper = ({ children })=>{
   if(!res2.ok)
   {
     console.log("Error during data fetch")
-    setLoading(false)
+    // setLoading(false)
     return
   }
 }
@@ -57,7 +57,7 @@ const UserContextWrapper = ({ children })=>{
     usertype,
     cookieset: 1})
 
-    setLoading(false)
+    // setLoading(false)
 })
 
 
@@ -66,7 +66,7 @@ useEffect(
     getUserData()
  }, [])
 
- if(loading) return <>{children}</>
+//  if(loading) return <>{children}</>
   return (
         <UserContext.Provider value={{user, setUser}}>
         {children}
