@@ -30,9 +30,11 @@ const Projects = () => {
     const [tags, setTags] = useState(clrtagval)
     const [failure, setFailure] = useState(false)
     const [showtags, setShowtags] = useState(false)
+    const [loading, setLoading] = useState(false)
     const {user} = useUser()
 
     const fetchProjects = AsyncHandler(async(page, query, curtags=tags) =>{
+        setLoading(true)
         const selectedTags = Object.keys(curtags).filter(tag => curtags[tag])
         const params = new URLSearchParams()
         if(page !== 1) params.append("page", page)
@@ -46,6 +48,7 @@ const Projects = () => {
         const tot = projects.data.tot
         setTotalPages(Math.ceil(tot / projectsPerPage))
         navigate(`/projects?${params.toString()}`)
+        setLoading(false)
         })
 
     const fetchTags = AsyncHandler(async(arr=tags)=>{
@@ -108,7 +111,12 @@ const Projects = () => {
   [stateaddproj])
 
     return (
-        <>
+        <>{loading && (
+    <div className="loading-overlay">
+        <span className="loading-text">Loading projects</span>
+        <span className="loading-dots"></span>
+    </div>
+)}
                 {!stateaddproj && (
   <div className="ham" style={{ zIndex: showtags ? 1 : 5 }}>
     <Ham state={stateham} setState={setStateham}/>
