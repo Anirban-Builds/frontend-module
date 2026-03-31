@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Fileuploader from "../components/common/FileUploader"
 import AsyncHandler from "../utils/AsyncHandler"
-import FormSubmit from "../utils/Formsubmit"
 import PopupCard from "../components/common/popupCard"
 import { ProjectLoading } from "./ProjCommonComp"
 import "./styles/projectspm.css"
@@ -35,20 +34,21 @@ const ProjectSPM = () => {
         }
 
         const payload = new FormData()
-        payload.append("projImage1", projImage1)
-        payload.append("projImage2", projImage2)
+        payload.append("files", projImage1)
+        payload.append("files", projImage2)
 
-        payload.append("projDesc1", projDesc1)
-        payload.append("projDesc2", projDesc2)
+        payload.append("texts", projDesc1)
+        payload.append("texts", projDesc2)
 
         setResultStatus(true)
         setMsg(<ProjectLoading/>)
 
-        const res = await FormSubmit("http://localhost:8000/api/v1/projects/submit/shopee-product-matching",
-            payload,
-            true)
+        const HF_URL = "https://anirban0011-multimodal-shopee-finetune.hf.space/predict"
 
-        console.log(res)
+        const res = await fetch(HF_URL, {
+        method : "POST",
+        body : payload
+    })
 
         if(!res.ok){
             setPopup(true)
@@ -59,7 +59,7 @@ const ProjectSPM = () => {
 
         const data =  await res.json()
 
-        setMsg(data.data.message)
+        setMsg(data.message)
         setCancelState(true)
     })
 

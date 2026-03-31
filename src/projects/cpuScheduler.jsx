@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import AsyncHandler from "../utils/AsyncHandler"
 import PopupCard from "../components/common/popupCard"
-import FormSubmit from "../utils/Formsubmit"
 import { ProjectLoading } from "./ProjCommonComp"
 import "./styles/projschler.css"
 
@@ -63,19 +62,23 @@ const ProjectCPUSchler = () => {
         return
     }
 
-    const payload = new FormData()
-    payload.append("algo", selected.split(" ").slice().map((e)=>(e[0].toLowerCase())).join(""))
-    payload.append("at", at)
-    payload.append("burst", burst)
-    payload.append("prts", prts)
-    payload.append("q", q)
+    const algo= selected.split(" ").slice().map((e)=>(e[0].toLowerCase())).join("")
+    const body = {
+        ats: at.map(x => Number(x)),
+        bursts: burst.map(x => Number(x)),
+        prts: prts.map(x => Number(x))
+    }
+    if(q > 0) body.q = q
 
     setResultStatus(true)
     setMsg(<ProjectLoading/>)
 
-    const res = await FormSubmit("http://localhost:8000/api/v1/projects/submit/cpu-scheduling",
-        payload,
-        true)
+    const HF_URL = `https://anirban0011-cpu-scheduler.hf.space/${algo}`
+
+    const res = await fetch(HF_URL, {
+            method : "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)})
 
     if(!res.ok){
     setPopup(true)
@@ -86,10 +89,9 @@ const ProjectCPUSchler = () => {
 
     const data =  await res.json()
     setResultStatus(false)
-    setResult(data.data.result)
-    setGcq(data.data.gcq)
-    console.log(data.data.gcq)
-    SetavgTime(data.data.avg)
+    setResult(data.result)
+    setGcq(data.gcq)
+    SetavgTime(data.avg)
     setRows([])
     setAT([])
     setBurst([])
