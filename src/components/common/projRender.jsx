@@ -36,10 +36,6 @@ const ProjPageRender = () =>{
             join(" ")
     const p = proj.find(p => p.title === projectId.toLowerCase())
 
-    // const handleManual = () =>{
-    //     //Add readme pull and project logic
-    // }
-
     if(!Project){
         return <NotFound/>
     }
@@ -56,13 +52,10 @@ const ProjPageRender = () =>{
             </div>
             <div className="proj-banner-div">
                 <button className="proj-back-btn"
-                onClick={()=>{navigate(-1)}}>{"⬅️Back"}</button>
-                {/* <button className="proj-man-btn"
-                onClick={()=>{handleManual}}
-                >{"📒Manual"}</button> */}
+                onClick={()=>{navigate(-1)}}>{"←"}</button>
                 <button className="proj-code-btn"
                 onClick={()=>{window.open(p.repo, "_blank")}}>
-                    {"</> Code"}</button>
+                    {"</>"}</button>
             </div>
             <div className="project-main-div"
             >

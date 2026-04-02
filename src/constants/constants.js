@@ -14,5 +14,6 @@ export const PATH_GH_LOGOUT = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh
 export const PATH_USER_LOGOUT = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/logout`
 export const PATH_GH_LINK = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-link`
 export const PATH_GH_UNLINK = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-unlink`
+export const PATH_USER_UPD_PWD = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/update-pwd`
 export const PATH_USR_UPD_IMG = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/update-cover-image`
 export const MAIL_ID = "anirban21100@alumni.iiitnr.ac.in"

@@ -37,42 +37,36 @@
 }
 
 .proj-back-btn{
-    height: 80%;
-    width: 100px;
-    background-color: #0f2866de;
-    color: white;
-    outline: none;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.proj-man-btn{
-    height: 80%;
-    width: 110px;
-    background-color: #0660d6de;
-    color: white;
-    outline: none;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.proj-code-btn{
-    height: 80%;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     background-color: #020007de;
     color: white;
     outline: none;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 700;
+    border-radius: 50%;
+    font-size: 28px;
+    padding-bottom: 2px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proj-code-btn{
+    height: 50px;
+    width: 50px;
+    background-color: #020007de;
+    color: white;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    line-height: 2;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ham-projrender{

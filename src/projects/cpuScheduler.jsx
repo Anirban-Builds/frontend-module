@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import AsyncHandler from "../utils/AsyncHandler"
 import PopupCard from "../components/common/popupCard"
+import useClickOutside from "../hooks/clickoutside"
 import { ProjectLoading } from "./ProjCommonComp"
 import "./styles/projschler.css"
 
@@ -20,6 +21,7 @@ const ProjectCPUSchler = () => {
      const[avgTime, SetavgTime] = useState([])
      const [quantastatus, SetQuantaStatus] = useState(null)
      const ddRef = useRef(null)
+     useClickOutside(ddRef, () => setddOpen(false))
      const tableRef = useRef(null)
 
      const options = ["First Come First Served",
@@ -111,15 +113,15 @@ const handleClear = () => {
     setQ(0)
 }
 
-useEffect(()=>{
-     const handleClickOutside = (e) => {
-      if (ddRef.current && !ddRef.current.contains(e.target)) {
-        setddOpen(false)
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-}, [])
+// useEffect(()=>{
+//      const handleClickOutside = (e) => {
+//       if (ddRef.current && !ddRef.current.contains(e.target)) {
+//         setddOpen(false)
+//       }
+//     }
+//     document.addEventListener("mousedown", handleClickOutside)
+//     return () => document.removeEventListener("mousedown", handleClickOutside)
+// }, [])
 
 useEffect(()=>{
     const tb = tableRef.current

@@ -79,7 +79,7 @@ const Login = () => {
                 usertype,
                 cookieset: 1
             })}
-            // localStorage.setItem('cookieset', '1')
+            localStorage.setItem('cookieset', '1')
             setLoading(false)
             navigate("/")
             return
@@ -153,7 +153,7 @@ const Login = () => {
                 avatar,
                 cookieset: 1
             })
-        // localStorage.setItem('cookieset', '1')
+        localStorage.setItem('cookieset', '1')
         setLoading(false)
         navigate("/", {state : {loginpopup : true}})
     })

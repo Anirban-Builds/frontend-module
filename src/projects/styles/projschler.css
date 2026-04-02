@@ -409,40 +409,37 @@
 }
 
 .projschler-time-quanta-div{
-  width: 100%;
+  width: 90%;
   height: 40px;
   display: flex;
-  margin-top: 10px;
+  margin: 20px auto;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
 .projschler-time-quanta-div p{
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 10px;
-  margin-left: -5%;
+  width: auto;
+  margin: 0 1rem;
 }
 
 .projschler-time-quanta-div input{
-  margin: 0 5px;
-  height: 80%;
+  margin: 0 4.3rem;
+  height: 35px;
   border-radius: 6px;
   outline: none;
   border: 1px solid #00b;
-  padding-left: 10px;
+  padding-left: 1rem;
   font-size: 15px;
+  width:10%
 }
 
 @media (max-width: 768px) {
 
-  /* Main container */
   .projschler-div {
     padding: 0 10px;
   }
 
-  /* Dropdown section */
   .projschler-dd-div {
     flex-direction: column;
     width: 100%;
@@ -454,7 +451,6 @@
     width: 100%;
   }
 
-  /* Time quanta */
   .projschler-time-quanta-div {
     flex-direction: column;
     gap: 6px;
@@ -468,17 +464,15 @@
     width: 100px;
   }
 
-  /* Table wrapper */
   .projschler-tb-div {
     width: 100%;
-    overflow-x: auto; /* IMPORTANT */
+    overflow-x: auto;
   }
 
   .projschler-tb-div table {
-    min-width: 600px; /* prevent squeezing */
+    min-width: 600px;
   }
 
-  /* Add/Delete buttons */
   .projschler-add-btn-div {
     width: 100%;
     flex-direction: column;
@@ -515,7 +509,5 @@
   .projschler-res-tb-div table {
     min-width: 900px;
   }
-
-  
 
 }

@@ -13,6 +13,7 @@ import {
     PATH_USR_UPD_IMG } from "../../constants/constants"
 import LOGOUT_LOGO from "../../assets/images/power-off-solid-full.svg"
 import GithubLogo from "../../assets/images/github-logo.png"
+import UpdPwdForm from "../common/UpdPwdform"
 import "../../styles/page/account.css"
 
 const Account = () => {
@@ -22,6 +23,7 @@ const Account = () => {
     const [failurestate, setFailureState] = useState(true)
     const [msg, setMsg] = useState("")
     const {user, setUser} = useUser()
+    const [stateupdpwd, setStateupdpwd] = useState(false)
     const inputRef = useRef(null)
 
     const handleLogout = AsyncHandler(async() =>{
@@ -53,7 +55,7 @@ const Account = () => {
             setPopup(true)
             return
     }
-        // localStorage.removeItem('cookieset')
+        localStorage.removeItem("cookieset")
         setUser({cookieset : 0})
         navigate("/")
     })
@@ -171,6 +173,20 @@ const Account = () => {
     setpopupState={setPopup}
     failure = {failurestate}
     />}
+    {
+        stateupdpwd && (
+            <div className="upd-pwd-form">
+                <UpdPwdForm
+                setState={setStateupdpwd}
+                onSuccess={(msg) => {
+                        setMsg(msg)
+                        setFailureState(false)
+                        setPopup(true)
+                    }}
+                />
+            </div>
+        )
+    }
     <div className="ham-acc"><Ham state={stateham} setState={setStateham}/></div>
      <div className={`account-layout`}>
         <div className="usr-img-div">
@@ -227,6 +243,12 @@ const Account = () => {
                     <img src={GithubLogo} alt="" />
                     </button>
                 </div>)}
+                {user.usertype?.[0] ?
+                    <div className="upd-pwd-btn">
+                    <button onClick={()=>{setStateupdpwd(true)}}>
+                        Update password
+                    </button>
+                </div> : ""}
             </div>
              <div className="logout-btn">
             <button
