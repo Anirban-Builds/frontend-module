@@ -90,8 +90,13 @@
     gap: 1rem;
     list-style: none;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     font-size: 1.35rem;
+}
+
+.nav-items li:last-child {
+    display: flex;
+    justify-content: center;
 }
 
 .navbar .nav-items a{
@@ -149,6 +154,28 @@
 }
 .icon-sun-dark{
     background-color: var(--text);
+}
+
+ .nav-items a.git-link {
+    display: flex;
+    gap: 6px;
+}
+
+.git-link{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.git-link img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: block;
+}
+
+.dark .git-link img{
+    border: 1px solid #ccc;
 }
 
  .account.small-text {
