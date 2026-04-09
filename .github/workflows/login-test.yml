@@ -1,0 +1,24 @@
+name: Login flow test
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - run: npm install
+    - run: npx playwright install --with-deps
+    - run: sleep 60   # wait for Vercel to finish deploying
+    - run: npx playwright test
+      env:
+          BASE_URL : ${{vars.VITE_GIT_URL}}
+          TEST_EMAIL: ${{ secrets.TEST_USERNAME }}
+          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+

@@ -1,3 +1,9 @@
 .env
 node_modules
-# src/constants/constants.js
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

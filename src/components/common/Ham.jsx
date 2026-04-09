@@ -12,6 +12,7 @@ const Ham = ({state, setState}) => {
     return(
         <>
             <button
+            data-testid="ham-menu-btn"
             className={`ham-menu ${state ? "open" : "close"}`}
             onClick={() =>{setState(!state)}}>
                 <div>
@@ -34,7 +35,7 @@ const Ham = ({state, setState}) => {
             {user.userExists?
             <li><Link to="/account" className={`account ${user.username.length > 10 ? "small-text" : ""}`}>
                 {user.username}</Link></li>:
-            <li><Link to="/login" className="login">Login</Link></li>}
+            <li><Link to="/login" className="login" data-testid="login-btn">Login</Link></li>}
             <Link to="/contact" className="contact">Contact</Link>
 
             <li><Link to="https://github.com/Anirban-Builds"

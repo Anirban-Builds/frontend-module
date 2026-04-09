@@ -127,8 +127,9 @@ const Login = () => {
         if (!res.ok) {
         const errData = await res.json()
         setLoading(false)
+        setFailurestate(true)
         setPopup(true)
-        setMsg(errData.message || "Login failed")
+        setMsg(errData.message ? `${errData.message} ⚠️` : "Login failed")
         return
     }
 
@@ -222,6 +223,7 @@ const Login = () => {
                     <label>Username or email address</label>
                 <input
                 className="username-field"
+                data-testid = "username-email-input"
                 value={uid}
                 onChange={(e)=>{setUid(e.target.value)}}
                 />
@@ -231,6 +233,7 @@ const Login = () => {
                     <div className="pwd-inner-div">
                 <input
                 className="pwd-field"
+                data-testid = "username-pass-input"
                 type={inptype ? "text" : "password"}
                 value={upwd}
                 onChange={(e)=>{setUpwd(e.target.value)}}
@@ -247,7 +250,9 @@ const Login = () => {
                        forgot password ?</a></p>
                 </div>
                 <div className="login-btn">
-                <button>Login</button>
+                <button
+                data-testid = "submit-login-btn"
+                >Login</button>
                 </div>
                 </div>
                 </form>

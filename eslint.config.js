@@ -16,5 +16,11 @@ export default defineConfig([
       "react/prop-types" : "off"
     }
   },
+  {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: globals.node
+    }
+  }
 
 ]);
