@@ -19,6 +19,6 @@ jobs:
     - run: npx playwright test
       env:
           BASE_URL : ${{vars.BASE_URL}}
-          TEST_EMAIL: ${{ secrets.TEST_USERNAME }}
+          TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
 
