@@ -15,9 +15,9 @@ jobs:
         node-version: lts/*
     - run: npm install
     - run: npx playwright install --with-deps
-    - run: npm run dev &
-    - run: npx wait-on http://localhost:5173
     - run : npx wait-on ${{vars.BASE_ENDPOINT}}
+    - run: VITE_BACKEND_BASE_URI=${{ vars.BASE_ENDPOINT }} npm run dev &
+    - run: npx wait-on http://localhost:5173
     - run: npx playwright test
       env:
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
