@@ -8,6 +8,12 @@ jobs:
   login-flow-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+          LOCALHOST: ${{ vars.LOCALHOST }}
+          TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+          VITE_BACKEND_BASE_URI: ${{ vars.VITE_BACKEND_BASE_URI }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -16,11 +22,8 @@ jobs:
     - run: npm install
     - run: npx playwright install --with-deps
     - run : npx wait-on ${{ vars.BASE_URL }}
-    - run: VITE_BACKEND_BASE_URI=${{ vars.VITE_BACKEND_BASE_URI }} npm run dev &
+    - run: npm run dev &
     - run: npx wait-on ${{ vars.LOCALHOST }}
     - run: npx playwright test tests/login.test.js
-      env:
-          LOCALHOST : ${{ vars.LOCALHOST }}
-          TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
-          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+
 
