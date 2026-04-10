@@ -12,7 +12,7 @@ test('user can login successfully', async ({ page, context }) => {
 
     page.on('response', async (res) => {
    if (res.url().includes('login')) {
-    console.log('LOGIN RESPONSE →', res.status(), res.url())
+    console.log('LOGIN ROUTE :', res.url())
   }
     })
 
