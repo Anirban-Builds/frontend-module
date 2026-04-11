@@ -6,5 +6,6 @@ function ship($branch, $message) {
     git checkout master
     git branch -D $branch
 
-    Write-Host "🚀 Deployment started !" -ForegroundColor Cyan
+    Write-Host "🚀 Deployment started !" -ForegroundColor Cyan -BackgroundColor White
+    git pull origin master
 }
