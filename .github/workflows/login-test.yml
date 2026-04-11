@@ -38,4 +38,4 @@ jobs:
             --title "Auto PR: ${{ github.ref_name }}" \
             --body "Automated PR created because Playwright login tests passed." \
             --base master \
-            --head ${{ github.ref_name }} || echo "PR already exists"
+            --head ${{ github.ref_name }} || echo "PR create failed !"
