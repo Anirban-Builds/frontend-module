@@ -42,3 +42,4 @@ jobs:
             --body "Automated PR created because Playwright login tests passed." \
             --base master \
             --head ${{ github.ref_name }}
+          gh pr merge --auto --squash "${{ github.ref_name }}"
