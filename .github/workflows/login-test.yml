@@ -30,6 +30,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      repository-projects: write
     if: success()
     steps:
       - uses: actions/checkout@v4
