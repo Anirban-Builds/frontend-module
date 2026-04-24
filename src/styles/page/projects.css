@@ -59,11 +59,7 @@
   z-index: 4;
 }
 
-.project .projformdiv .addprojform {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.project .projcarddiv
+.projcarddiv
 {
     margin: 75px 85px;
     display: flex;
@@ -204,6 +200,11 @@
   padding: 10px;
   gap: 1rem;
   padding-left: 1rem;
+  scrollbar-width: none;
+}
+
+.chkbox-dd-menu.scrolling{
+  scrollbar-width: thin;
 }
 
 .chkbox-dd-menu.open {

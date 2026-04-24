@@ -22,6 +22,7 @@ jobs:
           filters: |
             logic:
               - '**/*.js'
+              - '**/*.jsx'
               - 'package.json'
               - '.github/workflows/login-test.yml'
 
@@ -38,8 +39,9 @@ jobs:
           npx wait-on ${{ vars.LOCALHOST }}
           npx playwright test tests/login.test.js
       - if: failure()
-        run: git push origin --delete ${{ github.ref_name }}
-
+        env:
+          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        run: gh api -X DELETE repos/${{ github.repository }}/git/refs/heads/${{ github.ref_name }}
   create-pr:
     needs: login-flow-test
     runs-on: ubuntu-latest

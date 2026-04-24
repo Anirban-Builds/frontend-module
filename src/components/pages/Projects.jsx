@@ -8,6 +8,7 @@ import {SearchBar} from "../common/searchcomp"
 import { useEffect, useState} from "react"
 import { useProj } from "../../contexts/ProjectContext"
 import { useNavigate } from "react-router"
+import showPopup from "../../hooks/showPopup"
 import {useUser} from "../../contexts/UserContext"
 import { PROJ_GET_PATH, TAGS } from "../../constants/constants"
 import "../../styles/page/projects.css"
@@ -33,6 +34,10 @@ const Projects = () => {
     const [loading, setLoading] = useState(false)
     const [fetchdone, setFetchDone] = useState(false)
     const {user} = useUser()
+
+    const usePopup = (message, failure) => showPopup(message, failure,
+        setPopup, setMsg, setFailure)
+
 
     const fetchProjects = AsyncHandler(async(page, query, curtags=tags) =>{
         setLoading(true)
@@ -71,15 +76,24 @@ const Projects = () => {
 
     const onProjAddfunc = (res)=>{
         if(!res){
-            setPopup(true)
-            setMsg("Project Failed To Add 😥, Please Try Again Later 🔃!")
-            setFailure(true)
+            usePopup("Project Failed To Add 😥", true)
             return
         }
         else{
+            usePopup("Project Added Successfully ✅", false)
+            fetchProjects(1, "", clrtagval)
+            return
+        }
+    }
+
+    const onProjDelfunc = (res)=>{
+        if(!res){
             setPopup(true)
-            setMsg("Project Added Successfully ✅")
-            setFailure(false)
+            usePopup("Project Failed To Delete ☹️", true)
+            return
+        }
+        else{
+            usePopup("Project Deleted Successfully ✅", false)
             fetchProjects(1, "", clrtagval)
             return
         }
@@ -159,6 +173,7 @@ const Projects = () => {
             clearTags={clearTags}
             showtags={showtags}
             setShowtags = {setShowtags}
+            filter = {!Object.values(tags).every(v => !v)}
             />
         </div>
         <div className="projcarddiv">
@@ -169,6 +184,10 @@ const Projects = () => {
             </div>):
             (<ProjCardRender
             project={project}
+            deleteStatus={onProjDelfunc}
+            setTags={setTags}
+            fetchProjects={fetchProjects}
+            tags={clrtagval}
             />)}
         </div>
 {totalPages > 1 && (

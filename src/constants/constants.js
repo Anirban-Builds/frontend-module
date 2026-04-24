@@ -2,7 +2,8 @@ export const PROJ_SUB_PATH = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/
 export const PROJ_GET_PATH = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/fetchproject`
 export const PROJ_GET_TITLE = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/fetch-titles?title=`
 export const TAGS = ['ML', 'Fullstack', 'C', 'Web3',
-    'Python', 'React', 'Express', 'Node', 'MongoDB']
+    'Python', 'React', 'Express', 'Node', 'MongoDB', 'Electrical']
+export const PATH_DEL_PROJ = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/delete-project`
 export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email`
 export const PATH_GH_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-login?code=`
 export const PATH_USER_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/login`
@@ -22,4 +23,4 @@ export const PATH_DEl_GHUSER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/d
 export const PATH_OTP_USER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/usr-otp`
 export const PATH_OTP_GHUSER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/ghusr-otp`
 export const PATH_VER_TOKEN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/verify-token`
-export const MAIL_ID = "anirban21100@alumni.iiitnr.ac.in"
+export const MAIL_ID = "contact@anirbanbuilds.online"

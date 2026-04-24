@@ -8,7 +8,11 @@ import EXPAND_IMG from "../../assets/images/expand.png"
 import SHRINK_IMG from "../../assets/images/shrink.png"
 import "../../styles/component/projrender.css"
 
-const ProjCardRender = ({project}) => {
+const ProjCardRender = ({project,
+                        deleteStatus,
+                        setTags,
+                        fetchProjects,
+                        tags}) => {
 
     return (
         <>
@@ -16,9 +20,15 @@ const ProjCardRender = ({project}) => {
                 project.map((elem) =>(
                 <ProjectCard
                 key = {elem._id}
+                projId={elem._id}
                 imgUrl={elem.image}
                 projtitle={elem.title}
                 projTags={elem.tags}
+                projDeploy={elem.deploy}
+                deleteStatus={deleteStatus}
+                setTags={setTags}
+                fetchProjects={fetchProjects}
+                tags={tags}
                 />
                 ))
             }
