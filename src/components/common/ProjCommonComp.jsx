@@ -1,5 +1,5 @@
-import ManRunningImg from "../assets/images/man-running.png"
-import './styles/projcom.css'
+import ManRunningImg from "../../assets/images/man-running.png"
+import '../../styles/component/projcom.css'
 const ProjectLoading = () => {
     return (
         <div className="running-div">

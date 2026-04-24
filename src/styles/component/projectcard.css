@@ -10,13 +10,6 @@
 
 }
 
-.projectcard:hover{
-    width: 340px;
-    height: 227px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
-    border: none;
-}
-
 .projectcard .projectcard-img{
     display: block;
     width: 100%;
@@ -39,17 +32,130 @@
     font-size: 23px;
 }
 
-.projectcard .projectcard-desc .projectcard-tags{
+.projectcard-tags{
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     gap: 10px;
 }
 
-.projectcard-desc .projectcard-tags > div{
+.projectcard-tags > div{
     padding: 5px 10px;
     color: var(--text);
     border: 1px solid var(--text);
     width: fit-content;
     border-radius: 99px;
+}
+
+.projectcard-tags > div:hover{
+    background-color: #eef;
+}
+
+.line-break{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(95, 99, 104);
+    height: 0.5px;
+    width: 100%;
+}
+
+.projectcard-api{
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+}
+
+.proj-status{
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 13px;
+    min-width: 80px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    gap: 9px;
+    padding: 4px 12px;
+    background-color: #f8fafc;
+    margin-left: 0.25rem;
+}
+
+.status-word{
+    font-weight: 500;
+    line-height: 1;
+}
+
+.status-symbol{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  flex-shrink: 0;
+}
+
+.status-symbol.running { background-color: #22c55e; }
+.status-symbol.building, .status-symbol.initializing { background-color: #eab308; }
+.status-symbol.sleeping { background-color: #6366f1; }
+.status-symbol.runtime_error, .status-symbol.build_error { background-color: #ef4444; }
+.status-symbol.paused { background-color: #94a3b8; }
+.status-symbol.loading {background-color: #cbd5e1; }
+
+.hf-space-link, .delete-project{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hf-space-link{
+    margin-left: 0.25rem;
+}
+
+.delete-project{
+  margin-left: auto;
+  padding-right: 0.3rem;
+}
+
+.hf-space-link button, .delete-project button{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.hf-space-link button img, .delete-project button img{
+    width: 100%;
+    height: 80%;
+}
+
+.delete-project button:hover, .hf-space-link button:hover{
+    background: #dee;
+}
+
+.dark .delete-project button img, .dark .hf-space-link button img{
+    filter: invert(1) brightness(1.4) contrast(1.2);
+}
+
+.dark .delete-project button:hover, .dark .hf-space-link button:hover{
+    background: #666;
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #4caf50;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

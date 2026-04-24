@@ -31,10 +31,10 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
     useEffect(() => {
     if (!file) {
         setPreview(null)
-         if (inputRef.current) {
-      inputRef.current.value = ""
-    }}
-    }, [file])
+         if (inputRef.current) inputRef.current.value = ""
+    }
+    else if (file instanceof Blob) handleFile(file)
+}, [file])
 
     return (
         <div
@@ -42,7 +42,7 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
         onDragOver={handleDrag}
         onDragLeave={()=>{setDragOver(false)}}
         onDrop={handleDrop}>
-            
+
         {preview ? (
         <div className="preview">
         <img src={preview} alt="Preview"/>

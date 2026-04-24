@@ -1,6 +1,7 @@
 import Cancelbutton from "./Cancelbtn"
-import { useState, useEffect, useRef } from "react"
+import {useEffect, useRef } from "react"
 import { useNavigate } from "react-router"
+import useScrollbar from "../../hooks/useScrollbar"
 import { TAGS } from "../../constants/constants"
 import FILTER_ICON from "../../assets/images/filter-icon-3.png"
 import FILTER_ICON_2 from "../../assets/images/filter-icon-4.png"
@@ -14,11 +15,11 @@ const SearchBar = ({searchval,
                     clearTags,
                     showtags,
                     setShowtags,
+                    filter=false,
                     isHome=false}) => {
     const navigate = useNavigate()
-    const [filter, setFilter] = useState(false)
+    // const [filter, setFilter] = useState(false)
     const ddRef = useRef(null)
-
     const handleFilterImage = (filter=false)=>{
       return filter ? FILTER_ICON_2 : FILTER_ICON
     }
@@ -33,6 +34,8 @@ const SearchBar = ({searchval,
     navigateToProjects()
   }
 }
+
+useScrollbar(ddRef)
 
 useEffect(()=>{
      const handleClickOutside = (e) => {
@@ -75,7 +78,7 @@ useEffect(()=>{
                 ><img src={handleFilterImage(filter)}/></button>
             </div>
                     <div className={`chkbox-dd-menu ${showtags? "open" : "closed"}`}
-                    ref={ddRef}>
+                   ref={ddRef}>
                       <label>Select Tags :</label>
                     {TAGS.map((elem) => (
                     <div key={elem} className="chkbox-wrapper">
@@ -95,14 +98,12 @@ useEffect(()=>{
                 onClick={()=> {
                   fetchTags()
                   setShowtags(false)
-                  !Object.values(tags).every(v => !v) ? setFilter(true) :""
                 }}
                 > Apply</button>
                 <button
                  className="btn-clear"
                 onClick={()=>{clearTags()
                   setShowtags(false)
-                  setFilter(false)
                 }}
                 >
                     Clear
