@@ -4,7 +4,7 @@ export const PROJ_GET_TITLE = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects
 export const TAGS = ['ML', 'Fullstack', 'C', 'Web3',
     'Python', 'React', 'Express', 'Node', 'MongoDB', 'Electrical']
 export const PATH_DEL_PROJ = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/delete-project`
-export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email`
+export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email,public_repo,read:user,repo`
 export const PATH_GH_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-login?code=`
 export const PATH_USER_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/login`
 export const PATH_USER_SIGNUP = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/signup`
