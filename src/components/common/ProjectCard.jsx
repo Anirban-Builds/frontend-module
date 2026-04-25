@@ -24,9 +24,9 @@ const ProjectCard = ({imgUrl,
                       onProjStarfunc}) => {
     const {user} = useUser()
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(new Array(2).fill(false))
     const [hfstatus, setHfStatus] = useState('')
-    const [starred, setStarred] = useState(user.repolist?.includes(projId))
+    const [starred, setStarred] = useState(user.repolist?.some(id => id.toString() === projId.toString()))
 
     const handleNavigate = () =>{
         const id = projtitle.split(" ").slice().join("-")
@@ -34,14 +34,14 @@ const ProjectCard = ({imgUrl,
     }
 
     const handleDeleteProject = AsyncHandler(async() =>{
-        setLoading(true)
+        setLoading(prev => ({ ...prev, [0]: true }))
         const payload = {projId : projId,
             projTitle : projtitle,
             projTags : JSON.stringify(projTags)}
 
         const res = await FormSubmit(PATH_DEL_PROJ, payload, false, 'DELETE', true)
         deleteStatus(res.ok)
-        setLoading(false)
+        setLoading(prev => ({ ...prev, [0]: false }))
     })
 
     const handleTagClick = (elem) =>{
@@ -55,25 +55,23 @@ const ProjectCard = ({imgUrl,
               onProjStarfunc(false, false, false)
             return
         }
-        setLoading(true)
+        setLoading(prev => ({ ...prev, [1]: true }))
         const parts = repo.split("/")
         const owner = parts[3]
-        const repo_ = parts[4]
-        const payload = new FormData()
-        payload.append("owner", owner)
-        payload.append("repo", repo_)
-        payload.append("projId", projId)
+        const repo_ = parts[4].replace('.git', '')
+        const payload =  { owner : owner, repo: repo_, projId : projId }
 
         const res = await FormSubmit(PATH_STAR_GIT_REPO, payload, false, 'POST', true)
-        const data = await res.json()
-        const starstatus = data.data.isStarred
-        onProjStarfunc(res.ok, true, starstatus)
-        setStarred(!starstatus)
-        if(!res.ok) {
-            setLoading(false)
+         if(!res.ok) {
+            setLoading(prev => ({ ...prev, [1]: false }))
+            onProjStarfunc(false, false, false)
             return
         }
-        setLoading(false)
+        const data = await res.json()
+        const starstatus = data.data?.isStarred
+        onProjStarfunc(res.ok, true, starstatus)
+        setStarred(starstatus)
+        setLoading(prev => ({ ...prev, [1]: false }))
     })
 
     useEffect(()=>{
@@ -125,7 +123,7 @@ const ProjectCard = ({imgUrl,
                     </button>
             </div>
             <div className='github-star'>
-            {loading ?
+            {loading[1] ?
             <div className="spinner"></div>
             :<button
                 onClick={(e)=>{
@@ -141,7 +139,7 @@ const ProjectCard = ({imgUrl,
             </div>
             {user.masteruser ?
             (<div className='delete-project'>
-                {loading ?
+                {loading[0] ?
                 <div className="spinner"></div>
                 :
                 <button onClick={(e) => {

@@ -63,7 +63,7 @@
 .projectcard-api{
     display: flex;
     flex-direction: row;
-    height: 3rem;
+    height: 3.1rem;
 }
 
 .proj-status{
@@ -120,15 +120,15 @@
 }
 
 .github-star{
-  margin-left: auto;
+    margin-left: 6.6rem;
 }
 
 .hf-space-link button,
 .delete-project button,
 .github-star button{
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 37px;
+    height: 37px;
     background-color: transparent;
     border: none;
     outline: none;
@@ -137,8 +137,15 @@
 
 .hf-space-link button img,
 .delete-project button img,
-.github-star button, img{
+.github-star button img{
     width: 100%;
+    height: auto;
+}
+
+.github-star button{
+    width: 39px;
+}
+.github-star button img{
     height: 80%;
 }
 

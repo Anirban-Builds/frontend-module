@@ -27,7 +27,6 @@ const UserContextWrapper = ({ children })=>{
   if(!res2.ok)
   {
     console.log("Error during data fetch")
-    // setLoading(false)
     return
   }
 }
@@ -44,6 +43,7 @@ const UserContextWrapper = ({ children })=>{
     avatar,
     masteruser,
     usertype,
+    repolist,
   } = userData.data
   setUser({ _id,
     username,
@@ -56,23 +56,19 @@ const UserContextWrapper = ({ children })=>{
     firstload,
     avatar,
     usertype,
+    repolist,
     cookieset: 1})
-
-    // setLoading(false)
 })
-
 
 useEffect(
   () =>{
     getUserData()
  }, [])
 
-//  if(loading) return <>{children}</>
   return (
         <UserContext.Provider value={{user, setUser}}>
         {children}
         </UserContext.Provider>
 )}
-
 
 export {UserContextWrapper, useUser}
