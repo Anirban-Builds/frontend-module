@@ -72,8 +72,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: baseline;
   margin-top: 30px;
   gap: 1.5rem;
+  padding-left: 4rem;
 }
 
 .usr-div input{
@@ -89,7 +91,7 @@
 }
 
 .usrname-div{
-  margin-left: 15%;
+  display: inline;
 }
 
 .usrname-div input{
@@ -101,7 +103,7 @@
 }
 
 .usrmail-div{
-  margin-left: 15%;
+  display: inline;
 }
 
 .usrmail-div input{
@@ -122,13 +124,14 @@
   margin-right: 0.4rem;
 }
 
-.gh-link-div{
-  margin-left: 30%;
+.gh-link-div, .gh-linked-div, .upd-pwd-btn, .del-acc-div{
+  display: flex;
+  padding-left: 5rem;
 }
 
 .gh-link-div button{
   height: 35px;
-  width: 180px;
+  width: 220px;
   font-size: 18px;
   color: #fff;
   background-color: #000;
@@ -150,9 +153,7 @@
 }
 
 .gh-linked-div{
-  display: flex;
   flex-direction: row;
-  margin-left: 27%;
   gap: 1rem;
 }
 
@@ -201,9 +202,7 @@
 }
 
 .upd-pwd-btn{
-  display: flex;
   flex-direction: row;
-  margin-left: 27%;
   gap: 1rem;
 }
 
@@ -239,9 +238,7 @@
 
 
 .del-acc-div{
-  display: flex;
   flex-direction: row;
-  margin-left: 27%;
   gap: 1rem;
 }
 

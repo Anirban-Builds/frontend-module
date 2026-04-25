@@ -23,4 +23,5 @@ export const PATH_DEl_GHUSER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/d
 export const PATH_OTP_USER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/usr-otp`
 export const PATH_OTP_GHUSER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/ghusr-otp`
 export const PATH_VER_TOKEN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/verify-token`
+export const PATH_STAR_GIT_REPO = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/star-repo`
 export const MAIL_ID = "contact@anirbanbuilds.online"
