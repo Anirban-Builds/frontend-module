@@ -76,7 +76,7 @@ const Projects = () => {
 
     const onProjAddfunc = (res)=>{
         if(!res){
-            usePopup("Project Failed To Add 😥", true)
+            usePopup("Project failed to add 😥", true)
             return
         }
         else{
@@ -88,13 +88,27 @@ const Projects = () => {
 
     const onProjDelfunc = (res)=>{
         if(!res){
-            setPopup(true)
-            usePopup("Project Failed To Delete ☹️", true)
+            usePopup("Project failed to delete ☹️", true)
             return
         }
         else{
-            usePopup("Project Deleted Successfully ✅", false)
+            usePopup("Project deleted Successfully ✅", false)
             fetchProjects(1, "", clrtagval)
+            return
+        }
+    }
+
+    const onProjStarfunc = (res, ghuser, starred=false)=>{
+        if(!res){
+            if(!ghuser){
+             usePopup(`Github account required 😮`, true)
+             return
+            }
+            usePopup(`Project failed to ${!starred ? "star":"unstar"} ☹️`, true)
+            return
+        }
+        else{
+            usePopup(`Project ${!starred ? "starred":"unstarred"} successfully`, false)
             return
         }
     }
@@ -182,12 +196,13 @@ const Projects = () => {
             (<div className="not-found">
             No Projects Found
             </div>):
-            (<ProjCardRender
+            (<ProjCardRender // project card
             project={project}
             deleteStatus={onProjDelfunc}
             setTags={setTags}
             fetchProjects={fetchProjects}
             tags={clrtagval}
+            onProjStarfunc={onProjStarfunc}
             />)}
         </div>
 {totalPages > 1 && (

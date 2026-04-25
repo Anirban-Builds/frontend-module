@@ -61,14 +61,16 @@ const Login = () => {
                 masteruser,
                 usertype,
                 firstload,
+                repolist
             } = UserData.data
             const userStr = localStorage.getItem("user")
             const curuser = userStr ? JSON.parse(userStr) : null
             if(curuser?.islinking){
                 localStorage.setItem("user",
-                    JSON.stringify({...curuser,
+                    JSON.stringify(
+                        {...curuser,
                         ghEmail : ghEmail,
-                    avatar : avatar}))
+                        avatar : avatar}))
                 navigate("/account")
                 return
             }
@@ -83,6 +85,7 @@ const Login = () => {
                 masteruser,
                 firstload,
                 usertype,
+                repolist,
                 cookieset: 1
             })}
             localStorage.setItem('cookieset', '1')
@@ -144,7 +147,8 @@ const Login = () => {
                 firstload,
                 masteruser,
                 usertype,
-                avatar
+                avatar,
+                repolist
             } = UserData.data;
 
             setUser({
@@ -158,6 +162,7 @@ const Login = () => {
                 firstload,
                 usertype,
                 avatar,
+                repolist,
                 cookieset: 1
             })
         localStorage.setItem('cookieset', '1')

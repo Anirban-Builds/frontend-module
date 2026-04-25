@@ -1,7 +1,7 @@
 import Ham from "../common/Ham"
 import AsyncHandler from "../../utils/AsyncHandler"
 import FormSubmit from "../../utils/Formsubmit"
-import { useNavigate } from "react-router"
+import { useNavigate, useLocation } from "react-router"
 import { useUser } from "../../contexts/UserContext"
 import PopupCard from "../common/popupCard"
 import { useState, useRef, useEffect } from "react"
@@ -33,6 +33,7 @@ const Account = () => {
     const [otp, setOtp] = useState([])
     const [otperr, setOtperr] = useState(false)
     const [otpsent, setOtpsent] = useState(false)
+    const location = useLocation()
 
     const inputRef = useRef(null)
 
@@ -106,11 +107,10 @@ const Account = () => {
 
 
   useEffect(()=>{
-        const fetchGithubData = AsyncHandler(async()=>{
+    const fetchGithubData = AsyncHandler(async()=>{
         const userStr = localStorage.getItem("user")
         const curuser = userStr ? JSON.parse(userStr) : null
-        if (!curuser || !curuser.islinking) return
-        localStorage.removeItem("user")
+        if (!curuser || !curuser.islinking || !curuser.ghEmail) return
 
         const res = await fetch(PATH_GH_LINK,{
             method : "PATCH",
@@ -122,29 +122,30 @@ const Account = () => {
                 email : curuser.email,
                 ghEmail : curuser.ghEmail,
                 avatar : curuser.avatar,
+                masteruser : curuser.masteruser,
             })
         })
 
         if(!res.ok){
-        setFailureState(true)
-        setMsg("Error during linking! ⚠️")
-        setPopup(true)
-        return
-    }
-
+            setFailureState(true)
+            setMsg("Error during linking! 😥")
+            setPopup(true)
+            localStorage.removeItem("user")
+            return
+        }
         setUser({
-        ...curuser,
-        usertype: [curuser.usertype[0], true],
-        islinking: false
+            ...curuser,
+            usertype: [curuser.usertype[0], true],
+            islinking: false
         })
         setFailureState(false)
         setMsg("Github account Linked successfully ✅🔗!")
         setPopup(true)
+        localStorage.removeItem("user")
         return
     })
-        fetchGithubData()
-    },
-    [])
+    fetchGithubData()
+}, [location.key])
 
     const UnlinkGH = AsyncHandler(async()=>{
          const res = await fetch(PATH_GH_UNLINK,{
@@ -154,7 +155,7 @@ const Account = () => {
             },
             credentials : "include",
             body : JSON.stringify({
-                email : user.email,
+                email : user.email
             })
         })
 
@@ -164,7 +165,6 @@ const Account = () => {
             setPopup(true)
             return
         }
-
          const usertype = [...user.usertype]
          usertype[1] = false
          setUser(prev =>({...prev, ghEmail:"", avatar: "", usertype: usertype}))
@@ -287,7 +287,11 @@ const Account = () => {
                     />
                     </button>
                     <button className="unlink-btn"
-                    onClick={UnlinkGH}
+                    onClick={
+                        () =>{
+                        if(popup) setPopup(false)
+                        setTimeout(() => UnlinkGH(), 1)}
+                    }
                     > ✂️</button>
                 </div> : "")
             :

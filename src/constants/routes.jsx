@@ -30,7 +30,8 @@ const Routespath = () => {
         <Route path="account" element = {
             <ProtectedRoute>
                 <Account/>
-            </ProtectedRoute>}/>
+            </ProtectedRoute>
+        }/>
         <Route path="projects/:project-id" element={<ProjPageRender/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="reset-pwd/:token" element={

@@ -12,7 +12,9 @@ const ProjCardRender = ({project,
                         deleteStatus,
                         setTags,
                         fetchProjects,
-                        tags}) => {
+                        tags,
+                        onProjStarfunc,
+                        }) => {
 
     return (
         <>
@@ -29,6 +31,8 @@ const ProjCardRender = ({project,
                 setTags={setTags}
                 fetchProjects={fetchProjects}
                 tags={tags}
+                repo={elem.repo}
+                onProjStarfunc={onProjStarfunc}
                 />
                 ))
             }

@@ -6,7 +6,9 @@ import FormSubmit from '../../utils/Formsubmit'
 import handleHFstatus from '../../hooks/hfSpacestatus'
 import BIN_IMG from "../../assets/images/bin.png"
 import OPEN_IMG from "../../assets/images/link.png"
-import { PATH_DEL_PROJ } from '../../constants/constants'
+import STAR_IMG from "../../assets/images/star.png"
+import STAR_FULL_IMG from "../../assets/images/star-full.png"
+import { PATH_DEL_PROJ, PATH_STAR_GIT_REPO } from '../../constants/constants'
 import '../../styles/component/projectcard.css'
 
 const ProjectCard = ({imgUrl,
@@ -17,12 +19,14 @@ const ProjectCard = ({imgUrl,
                       deleteStatus,
                       setTags,
                       fetchProjects,
-                      tags}) => {
+                      tags,
+                      repo,
+                      onProjStarfunc}) => {
     const {user} = useUser()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [hfstatus, setHfStatus] = useState('')
-
+    const [starred, setStarred] = useState(user.repolist?.includes(projId))
 
     const handleNavigate = () =>{
         const id = projtitle.split(" ").slice().join("-")
@@ -33,8 +37,7 @@ const ProjectCard = ({imgUrl,
         setLoading(true)
         const payload = {projId : projId,
             projTitle : projtitle,
-            projTags : JSON.stringify(projTags)
-            }
+            projTags : JSON.stringify(projTags)}
 
         const res = await FormSubmit(PATH_DEL_PROJ, payload, false, 'DELETE', true)
         deleteStatus(res.ok)
@@ -46,6 +49,32 @@ const ProjectCard = ({imgUrl,
         setTags(newTags)
         fetchProjects(1, "", newTags)
     }
+
+    const handleStarRepoClick = AsyncHandler(async ()=>{
+        if(user.cookieset ===-1 ||!user.usertype[1]){
+              onProjStarfunc(false, false, false)
+            return
+        }
+        setLoading(true)
+        const parts = repo.split("/")
+        const owner = parts[3]
+        const repo_ = parts[4]
+        const payload = new FormData()
+        payload.append("owner", owner)
+        payload.append("repo", repo_)
+        payload.append("projId", projId)
+
+        const res = await FormSubmit(PATH_STAR_GIT_REPO, payload, false, 'POST', true)
+        const data = await res.json()
+        const starstatus = data.data.isStarred
+        onProjStarfunc(res.ok, true, starstatus)
+        setStarred(!starstatus)
+        if(!res.ok) {
+            setLoading(false)
+            return
+        }
+        setLoading(false)
+    })
 
     useEffect(()=>{
         handleHFstatus(projDeploy.
@@ -82,9 +111,9 @@ const ProjectCard = ({imgUrl,
            <div className='line-break'></div>
            <div className='projectcard-api'>
             <div className='proj-status'>
-            <div className={`status-symbol ${hfstatus ? hfstatus.toLowerCase() : 'loading'}`}>
+            <div className={`status-symbol ${hfstatus ? hfstatus : 'loading'}`}>
             </div>
-            <div className='status-word'>{hfstatus.toLowerCase()||'Loading'}</div>
+            <div className='status-word'>{hfstatus||'Loading'}</div>
             </div>
             <div className='hf-space-link'>
                  <button className="proj-code-btn"
@@ -95,11 +124,25 @@ const ProjectCard = ({imgUrl,
                     </img>
                     </button>
             </div>
-            <div className='github-star'></div>
+            <div className='github-star'>
+            {loading ?
+            <div className="spinner"></div>
+            :<button
+                onClick={(e)=>{
+                    e.stopPropagation()
+                    handleStarRepoClick()
+                }}
+                >
+                    {!starred ?
+                    <img src={STAR_IMG}/> :
+                    <img src={STAR_FULL_IMG}/>}
+                </button>
+                }
+            </div>
             {user.masteruser ?
             (<div className='delete-project'>
                 {loading ?
-                (<div className="spinner"></div>)
+                <div className="spinner"></div>
                 :
                 <button onClick={(e) => {
                 e.stopPropagation()

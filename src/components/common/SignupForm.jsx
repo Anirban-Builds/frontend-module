@@ -128,6 +128,7 @@ const SignupForm = ({setState}) =>{
                 masteruser,
                 usertype,
                 avatar,
+                repolist
             } = UserData.data;
 
             setUser({
@@ -141,6 +142,7 @@ const SignupForm = ({setState}) =>{
                 firstload,
                 usertype,
                 avatar,
+                repolist,
                 cookieset: 1
             })
     localStorage.setItem("cookieset", 1)

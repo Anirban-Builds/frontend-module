@@ -98,13 +98,13 @@
 }
 
 .status-symbol.running { background-color: #22c55e; }
-.status-symbol.building, .status-symbol.initializing { background-color: #eab308; }
-.status-symbol.sleeping { background-color: #6366f1; }
+.status-symbol.starting { background-color: #f28807; }
+.status-symbol.sleeping { background-color: #070be6; }
 .status-symbol.runtime_error, .status-symbol.build_error { background-color: #ef4444; }
-.status-symbol.paused { background-color: #94a3b8; }
+.status-symbol.paused { background-color: #f1f50b; }
 .status-symbol.loading {background-color: #cbd5e1; }
 
-.hf-space-link, .delete-project{
+.hf-space-link, .delete-project, .github-star{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,7 +119,13 @@
   padding-right: 0.3rem;
 }
 
-.hf-space-link button, .delete-project button{
+.github-star{
+  margin-left: auto;
+}
+
+.hf-space-link button,
+.delete-project button,
+.github-star button{
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -129,20 +135,28 @@
     cursor: pointer;
 }
 
-.hf-space-link button img, .delete-project button img{
+.hf-space-link button img,
+.delete-project button img,
+.github-star button, img{
     width: 100%;
     height: 80%;
 }
 
-.delete-project button:hover, .hf-space-link button:hover{
+.delete-project button:hover,
+.hf-space-link button:hover,
+.github-star button:hover{
     background: #dee;
 }
 
-.dark .delete-project button img, .dark .hf-space-link button img{
+.dark .delete-project button img,
+.dark .hf-space-link button img,
+.dark .github-star button img{
     filter: invert(1) brightness(1.4) contrast(1.2);
 }
 
-.dark .delete-project button:hover, .dark .hf-space-link button:hover{
+.dark .delete-project button:hover,
+.dark .hf-space-link button:hover,
+.dark .github-star button:hover{
     background: #666;
 }
 
