@@ -13,95 +13,12 @@
     width: 50%;
 }
 
-.projschler-sel-wrp {
-  position: relative;
-  width: 50%;
-}
-
-.projschler-sel-wrp
-.dd-header {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  transition: 0.4s;
-}
-
-.dark .projschler-sel-wrp .dd-header{
-  background: black;
-}
-
-.projschler-sel-wrp
-.dd-header:hover {
-  background: #f2f2f2;
-}
-
-.dark .projschler-sel-wrp
-.dd-header:hover {
-  background: #1a1a1a;
-}
-
-.projschler-sel-wrp
-.dd-header
-.arrow {
-  font-size: 15px;
-  transition: transform 0.4s;
-}
-
-.projschler-sel-wrp.open .arrow {
-  transform: rotate(180deg);
-}
-
-.projschler-sel-wrp
-.dd-list{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  margin: 4px 0 0;
-  padding: 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  list-style: none;
-  background: white;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1;
-}
-
-.dark .projschler-sel-wrp
-.dd-list{
-  background: black;
-}
-
-.projschler-sel-wrp
-.dd-list li {
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.projschler-sel-wrp
-.dd-list li:hover {
-  background: #eee;
-}
-
-.dark .projschler-sel-wrp
-.dd-list li:hover{
-  background: #1a1a1a;
-}
-
 .projschler-btn-div{
-    margin: 0 auto;
-    padding: 0.4rem 10rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 3rem;
-    width: 50%;
+    align-items: center;
+    justify-content: center;
 }
 
 .projschlerbtn{
@@ -113,7 +30,7 @@
     background-color: #14cedb;
     border: none;
     border-radius: 8px;
-    margin: 20px auto;
+    margin: 25px 2rem;
     cursor: pointer;
 }
 
@@ -130,7 +47,7 @@
     background-color: #007bff;
     border: none;
     border-radius: 8px;
-    margin: 20px auto;
+    margin: 25px 2rem;
     cursor: pointer;
 }
 
@@ -138,42 +55,16 @@
     background: #0056b3;
 }
 
-.projschler-tb-div{
-  margin: 20px auto;
-  border: 1px solid black;
-  padding: 0.5rem;
-  border-radius: 10px;
-  width: 70%;
-}
-
-.projschler-tb-div table{
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
-
-.projschler-tb-div table th{
-  border: 1px solid #000;
-  padding: 0.5rem 1rem;
-  background-color: #f2f2f2;
-  border-radius: 4px;
-  width: 25%;
-}
-
-.dark .projschler-tb-div table th{
-  background: black;
-  border: 1px solid #ccc;
-}
-
 .projschler-add-btn-div{
-  margin: 5px auto;
-  display: flex;
-  flex-direction: row;
-  width: 30%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
 }
 
 .projschler-add-btn{
-  margin: 0 auto;
   width: 120px;
   height: 40px;
   font-size: 15px;
@@ -190,7 +81,6 @@
 }
 
 .projschler-del-btn{
-  margin: 0 auto;
   width: 120px;
   height: 40px;
   font-size: 15px;
@@ -204,40 +94,6 @@
 
 .projschler-del-btn:hover{
   background-color: #8d0452c0;
-}
-
-.projschler-tb-div table td{
-  text-align: center;
-}
-
-.projschler-tb-div table td input{
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
-  outline: none;
-  font-size: 16px;
-  text-align: center;
-  border: 1px solid #111;
-}
-
-.dark .projschler-tb-div table td input{
-  background: black;
-  border: 1px solid #ccc;
-  color: white;
-}
-
-.projectschler-msg-div{
-  margin: 20px auto;
-    font-size: 20px;
-    font-weight: 200;
-    padding: 1rem 3rem;
-    border: 0.5px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dark .projectschler-msg-div{
-  border: 1px solid #ccc;
 }
 
 .projschler-res-div{
@@ -446,11 +302,6 @@
     gap: 6px;
   }
 
-  .projschler-sel-wrp {
-    width: 100%;
-    margin-top: 10px;
-  }
-
   .projschler-time-quanta-div {
     flex-direction: column;
     gap: 6px;
@@ -464,36 +315,15 @@
     width: 100px;
   }
 
-  .projschler-tb-div {
+.projschler-add-btn-div, .projschler-btn-div {
     width: 100%;
-    overflow-x: auto;
-  }
-
-  .projschler-tb-div table {
-    min-width: 600px;
-  }
-
-  .projschler-add-btn-div {
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .projschler-add-btn,
-  .projschler-del-btn {
-    width: 40%;
-  }
-
-  .projschler-btn-div {
-    width: 70%;
-    padding: 0;
     flex-direction: column;
     gap: 10px;
   }
 
   .projschlerbtn,
   .projschlerclrbtn {
-    width: 100%;
+    width: 40%;
   }
 
   .projschler-res-gc-div {

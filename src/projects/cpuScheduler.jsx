@@ -1,15 +1,12 @@
-import { useState, useRef, useEffect } from "react"
+import { useState} from "react"
 import AsyncHandler from "../utils/AsyncHandler"
-import PopupCard from "../components/common/popupCard"
-import useClickOutside from "../hooks/clickoutside"
+import DropDownComp from "../components/common/dropdown"
+import TableComp from "../components/common/tablecomp"
 import { ProjectLoading } from "../components/common/ProjCommonComp"
 import "./styles/projschler.css"
 
-const ProjectCPUSchler = ({ full }) => {
-    const [popup, setPopup] = useState(false)
-    const [ddopen, setddOpen] = useState()
+const ProjectCPUSchler = ({popup, setPopup, setMsg, full}) => {
     const [selected, setSelected] = useState("")
-    const [msg, setMsg] = useState("")
     const [rows, setRows] = useState([])
     const [at, setAT] = useState([])
     const [burst, setBurst] = useState([])
@@ -20,9 +17,7 @@ const ProjectCPUSchler = ({ full }) => {
     const [q, setQ] = useState(0)
     const [avgTime, SetavgTime] = useState([])
     const [quantastatus, SetQuantaStatus] = useState(null)
-    const ddRef = useRef(null)
-    useClickOutside(ddRef, () => setddOpen(false))
-    const tableRef = useRef(null)
+    const [loading, setLoading] = useState(false)
 
     const options = ["First Come First Served",
         "Shortest Job First",
@@ -35,8 +30,7 @@ const ProjectCPUSchler = ({ full }) => {
         "Highest Response Ratio Next"
     ]
 
-    const HandleSubmit = AsyncHandler(async (e) => {
-        e.preventDefault()
+    const HandleSubmit = AsyncHandler(async () => {
 
         if (!selected) {
             setPopup(true)
@@ -64,6 +58,7 @@ const ProjectCPUSchler = ({ full }) => {
             return
         }
 
+        setLoading(true)
         const algo = selected.split(" ").slice().map((e) => (e[0].toLowerCase())).join("")
         const body = {
             ats: at.map(x => Number(x)),
@@ -72,7 +67,6 @@ const ProjectCPUSchler = ({ full }) => {
         }
         if (q > 0) body.q = q
 
-        setResultStatus(true)
         setMsg(<ProjectLoading />)
 
         const HF_URL = `https://anirban0011-cpu-scheduler.hf.space/${algo}`
@@ -85,13 +79,14 @@ const ProjectCPUSchler = ({ full }) => {
 
         if (!res.ok) {
             setPopup(true)
-            setMsg("Project run error ⚠️")
-            setResultStatus(false)
+            setMsg("Project run error 😨")
+            setLoading(false)
             return
         }
 
         const data = await res.json()
-        setResultStatus(false)
+        setResultStatus(true)
+        setLoading(false)
         setResult(data.result)
         setGcq(data.gcq)
         SetavgTime(data.avg)
@@ -113,21 +108,6 @@ const ProjectCPUSchler = ({ full }) => {
         SetavgTime([])
         setQ(0)
     }
-
-    useEffect(() => {
-        const tb = tableRef.current
-        if (!tb) return
-        const rowcount = tb.querySelectorAll("tbody tr").length
-        const h = 7 * 40
-        if (rowcount > 5) {
-            tb.style.maxHeight = `${h}px`
-            tb.style.overflowY = "auto"
-        }
-        else {
-            tb.style.maxHeight = "unset"
-            tb.style.overflowY = "visible"
-        }
-    }, [rows])
 
     const showPopup = (message) => {
         setMsg(message)
@@ -197,48 +177,35 @@ const ProjectCPUSchler = ({ full }) => {
         }, 1500)
     }
 
+  const columns = [
+  { key: "id", label: "ID", readOnly: true, render: (row) => `P${row.id - 1}`},
+  { key: "at", label: "Arrival Time", min: 0},
+  { key: "burst", label: "Burst Time", min: 0},
+  { key: "prts",  label: "Priority"}
+]
+
+const data = { at, burst, prts }
+
+const setData = (key, arr) => {
+  if (key === "at")    setAT(arr)
+  if (key === "burst") setBurst(arr)
+  if (key === "prts")  setPrts(arr)
+}
+
     return (
         <>
-            {
-                popup && <PopupCard
-                    message={msg}
-                    setpopupState={setPopup}
-                    failure={true}
-                />
-            }
-            <form onSubmit={HandleSubmit}
+            <div
                 className="projschler-div">
                 <div className="projschler-dd-div">
                     <div className={`text-div ${full ? "active" : ""}`}>Choose scheduling Algorithm :</div>
-                    <div className={`projschler-sel-wrp ${ddopen ? "open" : ""}`}
-                        ref={ddRef}>
-                        <div
-                            className="dd-header"
-                            onClick={() => { setddOpen(!ddopen) }}
-                        >
-                            {selected || "Select"}
-                            <span className="arrow">{open ? "▲" : "▼"}</span>
-                        </div>
-                        {ddopen && (
-                            <ul className="dd-list">
-                                {
-                                    options.map((e) => (
-                                        <li
-                                            key={e}
-                                            onClick={() => {
-                                                setSelected(e)
-                                                setddOpen(false)
-                                                e === "Round Robin" ?
-                                                    SetQuantaStatus(true) : SetQuantaStatus(false)
-                                                setResult([])
-                                            }}>
-                                            {e}
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        )}
-                    </div>
+                    <DropDownComp
+                     selected = {selected}
+                     setSelected = {setSelected}
+                     options = {options}
+                     specialoption = {options[2]}
+                     setSpecialOption = {SetQuantaStatus}
+                     setResult = {setResult}
+                    />
                 </div>
                 {quantastatus && <div className="projschler-time-quanta-div">
                     <p>Time quanta :</p>
@@ -250,61 +217,13 @@ const ProjectCPUSchler = ({ full }) => {
                         }}
                     />
                 </div>}
-                <div className="projschler-tb-div"
-                    ref={tableRef}>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Arrival Time</th>
-                                <th>Burst Time</th>
-                                <th>Priority</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows.map((e, i) => (
-                                <tr key={e.id}>
-                                    <td>{`P${e.id - 1}`}</td>
-                                    <td>
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            value={at[i] || ""}
-                                            onChange={(e) => {
-                                                const arr = [...at]
-                                                arr[i] = e.target.value
-                                                setAT(arr)
-                                            }}
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="number"
-                                            min="0"
-                                            value={burst[i] || ""}
-                                            onChange={(e) => {
-                                                const arr = [...burst]
-                                                arr[i] = e.target.value
-                                                setBurst(arr)
-                                            }}
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="number"
-                                            value={prts[i]}
-                                            onChange={(e) => {
-                                                const arr = [...prts]
-                                                arr[i] = e.target.value
-                                                setPrts(arr)
-                                            }}
-                                        />
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        <TableComp
+                        columns={columns}
+                        rows={rows}
+                        rowth={5}
+                        data={data}
+                        setData={setData}
+                        />
                 <div className="projschler-add-btn-div">
                     <button className="projschler-add-btn"
                         type="button"
@@ -317,7 +236,10 @@ const ProjectCPUSchler = ({ full }) => {
                 </div>
                 <div className="projschler-btn-div">
                     <button
-                        onClick={() => { if (popup) setPopup(false) }}
+                        onClick={() => {
+                            if (popup) setPopup(false)
+                                setTimeout(()=> HandleSubmit(), 1)
+                            }}
                         className="projschlerbtn"
                     >Submit</button>
                     <button
@@ -326,8 +248,8 @@ const ProjectCPUSchler = ({ full }) => {
                         className="projschlerclrbtn"
                     >Clear</button>
                 </div>
-                {resultStatus ? <div className="projectschler-msg-div">{msg}</div> :
-                    (result.length > 0 &&
+                {loading && <ProjectLoading/>}
+                {resultStatus ? (result.length > 0 &&
                         <div className="projschler-res-div">
                             <div className="projschler-res-gc-div">
                                 {gcq.map((e, i) =>
@@ -388,8 +310,10 @@ const ProjectCPUSchler = ({ full }) => {
                                 </table>
                             </div>
                         </div>
-                    )}
-            </form>
+                    )
+                : ""
+                    }
+            </div>
         </>
     )
 }

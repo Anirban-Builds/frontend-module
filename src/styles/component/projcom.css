@@ -1,11 +1,26 @@
 .running-div{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    padding: 1rem 3rem;
+    margin: 20px auto;
 }
 
-.running-div img{
-    height: 27px;
-    width: 27px;
-    margin-left: 10px;
+.dark .running-div{
+  background-color: #2f2a2aca;
+  border: 1px solid #bbbbbbc7;
+}
+
+.running-div .spinner{
+  width: 25px;
+  height: 25px;
 }
 
 @media (max-width: 768px) {

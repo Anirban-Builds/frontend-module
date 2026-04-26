@@ -218,7 +218,9 @@ const Login = () => {
 
                 {loading ? (
                 <div className='addprojbuff'>Logging In
-                <div className="spinner"></div>
+                <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+                </svg>
                 </div>):
                 <div className="login-box">
                 <h3>Login</h3>

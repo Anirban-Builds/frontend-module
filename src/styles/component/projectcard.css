@@ -6,16 +6,24 @@
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
-    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
-
 }
 
-.projectcard .projectcard-img{
+.dark .projectcard{
+    background-color: #27272f;
+}
+
+.projectcard-img{
+    display: flex;
+    width: 100%;
+    height: inherit;
+    position: relative;
+    border-bottom: 1px solid rgb(95, 99, 104);
+}
+.projectcard-img img{
     display: block;
     width: 100%;
     height : 108px;
     object-fit: cover;
-    border-bottom: 1px solid rgb(95, 99, 104);
 }
 
 .projectcard .projectcard-desc{
@@ -51,6 +59,10 @@
     background-color: #eef;
 }
 
+.dark .projectcard-tags > div:hover{
+    background-color: #0d0d18;
+}
+
 .line-break{
     display: flex;
     align-items: center;
@@ -83,6 +95,10 @@
     margin-left: 0.25rem;
 }
 
+.dark .proj-status{
+    background-color: #28283f;
+}
+
 .status-word{
     font-weight: 500;
     line-height: 1;
@@ -97,14 +113,18 @@
   flex-shrink: 0;
 }
 
+.dark .status-symbol{
+    border: 1px solid #ccc;
+}
+
 .status-symbol.running { background-color: #22c55e; }
 .status-symbol.starting { background-color: #f28807; }
-.status-symbol.sleeping { background-color: #070be6; }
+.status-symbol.sleeping { background-color: #dd7d08;; }
 .status-symbol.runtime_error, .status-symbol.build_error { background-color: #ef4444; }
 .status-symbol.paused { background-color: #f1f50b; }
 .status-symbol.loading {background-color: #cbd5e1; }
 
-.hf-space-link, .delete-project, .github-star{
+.hf-space-link, .github-star{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,12 +135,14 @@
 }
 
 .delete-project{
-  margin-left: auto;
-  padding-right: 0.3rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .github-star{
-    margin-left: 6.6rem;
+    margin-left: auto;
+    padding-right: 0.5rem;
 }
 
 .hf-space-link button,
@@ -133,6 +155,11 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.delete-project button{
+    border-radius: 10px;
+    background-color: var(--bg);
 }
 
 .hf-space-link button img,
@@ -157,7 +184,7 @@
 
 .dark .delete-project button img,
 .dark .hf-space-link button img,
-.dark .github-star button img{
+.dark .github-star:not(.full) button img{
     filter: invert(1) brightness(1.4) contrast(1.2);
 }
 
@@ -165,18 +192,4 @@
 .dark .hf-space-link button:hover,
 .dark .github-star button:hover{
     background: #666;
-}
-
-.spinner {
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-top-color: #4caf50;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }

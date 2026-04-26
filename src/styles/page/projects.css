@@ -9,6 +9,14 @@
     border-radius: 6px;
 }
 
+.dark #root,
+.dark .project,
+.dark .projectheader,
+.dark .projsearchBar,
+.dark .projcarddiv{
+  background-color: #172638be;
+}
+
 .ham{
     position: fixed;
     top: 12px;
@@ -93,11 +101,17 @@
   background: var(--bg);
   justify-content: center;
   padding: 10px 0;
+  z-index: 3;
 }
 
 .projsearchBar.scrolled{
     box-shadow: 0 4px 6px -2px rgba(0,0,0,0.3);
     border-radius: 0 0 12px 12px;
+}
+
+.dark .projsearchBar.scrolled{
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.3);
+    background-color: #0d0f12f0;
 }
 
 .projsearchBar input{
@@ -118,6 +132,10 @@
 
 .projsearchBar input:focus{
  outline: none;
+}
+
+.dark .projsearchBar input:hover{
+  border-color: #69c1d9d0;
 }
 
 .projsearchBar span {
@@ -205,6 +223,10 @@
 
 .chkbox-dd-menu.scrolling{
   scrollbar-width: thin;
+}
+
+.dark .chkbox-dd-menu.scrolling{
+  scrollbar-color: #444 #1a1a1a;
 }
 
 .chkbox-dd-menu.open {

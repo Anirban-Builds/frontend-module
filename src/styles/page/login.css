@@ -272,16 +272,12 @@ div.login-layout div.addprojbuff{
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-   gap: 25px;
+  gap: 20px;
 }
 
-.login-layout .spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-top-color: #4caf50;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.addprojbuff .spinner {
+  width: 33px;
+  height: 33px;
 }
 
 @media (max-width: 768px) {
