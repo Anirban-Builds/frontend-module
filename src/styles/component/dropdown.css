@@ -1,0 +1,88 @@
+.dd-sel-wrp {
+  position: relative;
+  width: 50%;
+}
+
+.dd-sel-wrp
+.dd-header {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: 0.4s;
+}
+
+.dark .dd-sel-wrp .dd-header{
+  background: black;
+}
+
+.dd-sel-wrp
+.dd-header:hover {
+  background: #f2f2f2;
+}
+
+.dark .dd-sel-wrp
+.dd-header:hover {
+  background: #1a1a1a;
+}
+
+.dd-sel-wrp
+.dd-header
+.arrow {
+  font-size: 15px;
+  transition: transform 0.4s;
+}
+
+.dd-sel-wrp.open .arrow {
+  transform: rotate(180deg);
+}
+
+.dd-sel-wrp
+.dd-list{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 4px 0 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  background: white;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.dark .dd-sel-wrp
+.dd-list{
+  background: black;
+}
+
+.dd-sel-wrp
+.dd-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dd-sel-wrp
+.dd-list li:hover {
+  background: #eee;
+}
+
+.dark .dd-sel-wrp
+.dd-list li:hover{
+  background: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+    .dd-sel-wrp {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

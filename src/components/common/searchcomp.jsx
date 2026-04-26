@@ -18,7 +18,6 @@ const SearchBar = ({searchval,
                     filter=false,
                     isHome=false}) => {
     const navigate = useNavigate()
-    // const [filter, setFilter] = useState(false)
     const ddRef = useRef(null)
     const handleFilterImage = (filter=false)=>{
       return filter ? FILTER_ICON_2 : FILTER_ICON

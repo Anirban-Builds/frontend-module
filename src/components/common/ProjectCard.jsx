@@ -86,11 +86,24 @@ const ProjectCard = ({imgUrl,
         <div className='projectcard' title={projtitle}
         onClick={handleNavigate}
         >
+           <div className='projectcard-img'>
            <img
            src={imgUrl}
            title={projtitle}
-           className='projectcard-img'
            />
+            {user.masteruser ?
+            (<div className='delete-project'>
+                {loading[0] ?
+                <div className="spinner"></div>
+                :
+                <button onClick={(e) => {
+                e.stopPropagation()
+                handleDeleteProject()
+                }}>
+                    <img src={BIN_IMG}/>
+                </button>}
+            </div>): ""}
+           </div>
            <div className='projectcard-desc'>
            <h3>{projtitle}</h3>
            <div className='projectcard-tags'>
@@ -122,7 +135,7 @@ const ProjectCard = ({imgUrl,
                     </img>
                     </button>
             </div>
-            <div className='github-star'>
+            <div className={`github-star ${starred ? "full" : ""}`}>
             {loading[1] ?
             <div className="spinner"></div>
             :<button
@@ -137,18 +150,7 @@ const ProjectCard = ({imgUrl,
                 </button>
                 }
             </div>
-            {user.masteruser ?
-            (<div className='delete-project'>
-                {loading[0] ?
-                <div className="spinner"></div>
-                :
-                <button onClick={(e) => {
-                e.stopPropagation()
-                handleDeleteProject()
-                }}>
-                    <img src={BIN_IMG}/>
-                </button>}
-            </div>): ""}
+
            </div>
         </div>
     )

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useParams, useNavigate} from "react-router"
 import ProjectCard from "./ProjectCard"
 import NotFound from "../pages/404"
+import PopupCard from "./popupCard"
 import { useProj } from "../../contexts/ProjectContext"
 import { ProjectComponentMap } from "../../projects/ProjectsCompMap"
 import EXPAND_IMG from "../../assets/images/expand.png"
@@ -45,6 +46,8 @@ const ProjPageRender = () =>{
     let { 'project-id': projectId } = useParams()
     const Project = ProjectComponentMap[projectId]
     const [full, setFull] = useState(false)
+    const [popup, setPopup] = useState(false)
+    const [msg, setMsg] = useState("")
 
     projectId = projectId.
             split("-").
@@ -56,10 +59,17 @@ const ProjPageRender = () =>{
         return <NotFound/>
     }
     const toggleFullscreen = () => {
-        setFull(prev => !prev);
+        setFull(prev => !prev)
     }
     return(
       <>
+       {
+                popup && <PopupCard
+                    message={msg}
+                    setpopupState={setPopup}
+                    failure={true}
+                />
+        }
         <div
         className= {`projpage-layout`}
         >
@@ -67,14 +77,18 @@ const ProjPageRender = () =>{
             projectId}
             </div>}
             <div className="outer-banner-div">
-            {!full && <div className="proj-banner-div">
+            {!full &&
+               <div className="proj-banner-div">
                 <button className="proj-back-btn"
-                onClick={()=>{navigate(-1)}}>{"←"}</button>
+                onClick={()=>{navigate(-1)}}>{"←"}
+                </button>
                 <button className="proj-code-btn"
                 onClick={()=>{window.open(p.repo, "_blank")}}>
-                    {"</>"}</button>
+                    {"</>"}
+                </button>
             </div>}
-            <div className={`fullsc-div ${full ? "active" : ""}`}><button
+            <div className={`fullsc-div ${full ? "active" : ""}`}>
+                <button
             onClick={toggleFullscreen}>
                 {!full ? <img src={EXPAND_IMG} />:
                         <img src={SHRINK_IMG}
@@ -85,7 +99,11 @@ const ProjPageRender = () =>{
             <div className="proj-main-div"
             >
                 <Project
-                 full={full}
+                popup = {popup}
+                msg = {msg}
+                setPopup = {setPopup}
+                setMsg = {setMsg}
+                full = {full}
                 />
             </div>
         </div>

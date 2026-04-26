@@ -1,47 +1,41 @@
 import { useState } from "react"
 import Fileuploader from "../components/common/FileUploader"
 import AsyncHandler from "../utils/AsyncHandler"
-import PopupCard from "../components/common/popupCard"
 import { ProjectLoading } from "../components/common/ProjCommonComp"
 import "./styles/projectspm.css"
 
-const ProjectSPM = () => {
+const ProjectSPM = ({popup, msg, setPopup, setMsg}) => {
     const [projImage1, setprojImage1] = useState(null)
     const [projImage2, setprojImage2] = useState(null)
     const [projDesc1, setprojDesc1] = useState("")
     const [projDesc2, setprojDesc2] = useState("")
-    const [resultStatus, setResultStatus] = useState(false)
-    const [cancelState, setCancelState] = useState(true)
-    const [popup, setPopup] = useState(false)
-    const [msg, setMsg] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [resultstatus, setResultstatus] = useState(false)
+    const [filestate, setfileState] = useState(true)
 
-    const HandleSubmit = AsyncHandler(async (e) => {
-        e.preventDefault()
-        setCancelState(false)
+    const HandleSubmit = AsyncHandler(async () => {
+        setfileState(false)
 
         if (!projImage1 || !projImage2) {
             setPopup(true)
-            setCancelState(true)
+            setfileState(true)
             setMsg("Image is required 🖼️")
             return
         }
 
         if (!projDesc1 || !projDesc2) {
             setPopup(true)
-            setCancelState(true)
             setMsg("Description is required ✒️")
+            setfileState(true)
             return
         }
+        setLoading(true)
 
         const payload = new FormData()
         payload.append("files", projImage1)
         payload.append("files", projImage2)
-
         payload.append("texts", projDesc1)
         payload.append("texts", projDesc2)
-
-        setResultStatus(true)
-        setMsg(<ProjectLoading />)
 
         const HF_URL = "https://anirban0011-multimodal-shopee-finetune.hf.space/predict"
 
@@ -52,15 +46,16 @@ const ProjectSPM = () => {
 
         if (!res.ok) {
             setPopup(true)
-            setMsg("Project run error ⚠️")
-            setResultStatus(false)
+            setMsg("Project run error 😨")
+            setLoading(false)
+            setResultstatus(false)
             return
         }
-
         const data = await res.json()
-
+        setResultstatus(true)
+        setLoading(false)
         setMsg(data.message)
-        setCancelState(true)
+        setfileState(true)
     })
 
     const handleClear = () => {
@@ -68,25 +63,18 @@ const ProjectSPM = () => {
         setprojImage2(null)
         setprojDesc1("")
         setprojDesc2("")
-        setResultStatus(false)
+        setResultstatus(false)
         setMsg("")
     }
 
     return (
         <>
-            {
-                popup && <PopupCard
-                    message={msg}
-                    setpopupState={setPopup}
-                    failure={true}
-                />
-            }
-            <form onSubmit={HandleSubmit}
+            <div
                 className="projectspm-div">
                 <div className="projectspm-upload">
                     <div className="projectspm-file">
                         <Fileuploader
-                            submitState={cancelState}
+                            submitState={filestate}
                             setState={setprojImage1}
                             uploadText={"Upload product 1 Image"}
                             inputId="product-image-1"
@@ -100,7 +88,7 @@ const ProjectSPM = () => {
                     </div>
                     <div className="projectspm-file">
                         <Fileuploader
-                            submitState={cancelState}
+                            submitState={filestate}
                             setState={setprojImage2}
                             uploadText={"Upload product 2 Image"}
                             inputId="product-image-2"
@@ -113,23 +101,24 @@ const ProjectSPM = () => {
                             placeholder="Enter product 2 decription..." />
                     </div>
                 </div>
-
                 <div className="projspm-btn-div">
                     <button
-                        onClick={() => { if (popup) setPopup(false) }}
+                        onClick={() => { if (popup) setPopup(false)
+                            if(resultstatus) setResultstatus(false)
+                            HandleSubmit()
+                        }}
                         className="projspmbtn"
                     >Submit</button>
-
                     <button
-                        type="button"
                         onClick={handleClear}
                         className="projspmclrbtn"
                     >Clear</button>
                 </div>
-
-                {resultStatus &&
-                    (msg === "" ? "" : <div className="projectspm-msg-div">{msg}</div>)}
-            </form>
+                {(loading || resultstatus) && <ProjectLoading
+                resultstatus = {resultstatus}
+                msg= {msg}
+                />}
+            </div>
         </>
     )
 }

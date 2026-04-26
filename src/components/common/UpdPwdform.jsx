@@ -21,8 +21,12 @@ const UpdPwdForm = ({setState, onSuccess}) => {
     const formRef = useRef(null)
     useClickOutside(formRef, () => setState(false))
 
-    const handleSubmit = AsyncHandler(async(e)=>{
-        e.preventDefault()
+    const handleSubmit = AsyncHandler(async()=>{
+        if(!oldpwd || !newpwd || !newpwdcnf){
+            setPopup(true)
+            setMsg("Enter all details 😅")
+            return
+        }
         if(newpwd !== newpwdcnf){
             setPopup(true)
             setMsg("New passwords don't match ❌")
@@ -58,7 +62,9 @@ const UpdPwdForm = ({setState, onSuccess}) => {
     <div className='form-main-div' ref={formRef}>
     {loading ?
      (<div className='updpwdbuff'>Updating password
-        <div className="spinner"></div>
+        <svg className="spinner" viewBox="25 25 50 50">
+        <circle cx="50" cy="50" r="20"/>
+        </svg>
         </div>)
         :
         (<>
@@ -98,7 +104,9 @@ const UpdPwdForm = ({setState, onSuccess}) => {
     </div>
     <div className='sub-btn'
     >
-        <button onClick={handleSubmit}>
+        <button onClick={()=>{
+            if(popup) setPopup(false)
+            setTimeout(()=> handleSubmit(), 1)}}>
             Submit
         </button>
     </div>

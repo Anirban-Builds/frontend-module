@@ -1,0 +1,30 @@
+.btn-div{
+    flex-direction: column;
+}
+
+.btn-div .submit-btn{
+    width: 200px;
+    margin: 4rem auto;
+}
+
+.btn-div .submit-btn.loading{
+    background-color: rgb(11, 187, 128);
+    color: #fff;
+    font-size: 20px;
+    padding: 18px 20px;
+    top: 0;
+    left: 0;
+    position: relative;
+}
+
+.btn-div .submit-btn.loading{
+    margin-bottom: -2rem;
+}
+
+.btn-div .reset-btn{
+    margin-bottom: 2rem;
+}
+
+.btn-div .running-div{
+    margin-top: 5%;
+}

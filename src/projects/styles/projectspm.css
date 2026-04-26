@@ -1,11 +1,3 @@
-:root {
-    --bg: #ccc;
-}
-
-.dark {
-    --bg: black;
-}
-
 .projectspm-div{
     width: 100%;
     display: flex;
@@ -68,21 +60,12 @@
     background-color: #066c73;
 }
 
-.projectspm-msg-div{
-    margin: 20px auto;
-    font-size: 20px;
-    font-weight: 200;
-    padding: 1rem 3rem;
-    border: 0.5px solid rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .projspm-btn-div{
-    margin: 0;
-    padding: 0.4rem 30rem;
+    width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .projspmclrbtn{
