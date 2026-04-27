@@ -24,7 +24,7 @@
 }
 
 .proj-main-div{
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 20px;
     width: 99%;
     padding: 0.5rem;
@@ -63,14 +63,10 @@
    filter: invert(1) brightness(1.4) contrast(1.2);
 }
 
-.proj-code-btn{
-    margin-left: 1rem;
-}
-
 .fullsc-div{
     position: fixed;
     top: 1rem;
-    right: 6rem;
+    right: 2.5rem;
     z-index: 4;
 }
 
@@ -123,13 +119,11 @@
 
 .dark .proj-back-btn:hover, .dark .proj-code-btn:hover{
     background-color: #454552;
-    /* border: 1px solid #ccc; */
 }
 
 .dark .fullsc-div button:hover{
-    background-color: #454552;
+  background-color: #454552;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(255, 255, 255, 0.05);
-
 }
 
 @media (max-width: 768px){
@@ -158,6 +152,10 @@
     margin-left: 0.5rem;
 }
 
+.proj-code-btn{
+    margin-left: 1rem;
+}
+
 .fullsc-div{
     position: static;
     top: unset;
@@ -171,14 +169,13 @@
 
 .fullsc-div.active{
     position: fixed;
-    top: 1.2rem;
-    right: 1.8rem;
+    top: 1.7rem;
+    right: 0.4rem;
 }
 
 .proj-main-div{
     width: 98%;
     padding: 0.5rem;
-    margin-bottom: 10px;
 }
 
 }

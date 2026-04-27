@@ -128,7 +128,7 @@ const ProjectCard = ({imgUrl,
             <div className='status-word'>{hfstatus||'Loading'}</div>
             </div>
             <div className='hf-space-link'>
-                 <button className="proj-code-btn"
+                 <button
                 onClick={(e)=>{
                     e.stopPropagation()
                     window.open(projDeploy, "_blank")}}>

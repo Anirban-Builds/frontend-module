@@ -43,23 +43,6 @@
     outline: none;
 }
 
-.projspmbtn{
-    width: 120px;
-    height: 50px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    background-color: #14cedb;
-    border: none;
-    border-radius: 8px;
-    margin: 20px auto;
-    cursor: pointer;
-}
-
-.projspmbtn:hover{
-    background-color: #066c73;
-}
-
 .projspm-btn-div{
     width: 100%;
     display: flex;
@@ -68,21 +51,38 @@
     justify-content: center;
 }
 
-.projspmclrbtn{
+.projspmbtn, .projspmclrbtn{
     width: 120px;
     height: 50px;
     color: #fff;
     font-size: 20px;
     font-weight: 500;
-    background-color: #007bff;
+    background-color: #1bdcaf;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     margin: 20px auto;
     cursor: pointer;
+    top: 0;
+    left: 0;
+    position: relative;
+    box-shadow: 0 3px 0 #04585e;
+}
+
+.projspmbtn:hover{
+    background-color: #0799a4;
+}
+
+.projspmclrbtn{
+    background-color: #32b5ed;
 }
 
 .projspmclrbtn:hover{
     background: #0056b3;
+}
+
+.projspmbtn:active, .projspmclrbtn:active{
+   top:5px;
+   box-shadow:0 0 0 0;
 }
 
 @media (max-width: 768px) {
