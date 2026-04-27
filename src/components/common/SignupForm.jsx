@@ -206,7 +206,9 @@ const SignupForm = ({setState}) =>{
             </div>
             {loading ? (
                 <div className='addprojbuff'>Signing Up
-                <div className="spinner"></div>
+                 <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+                </svg>
                 </div>) :
             (<div className="signup-btn">
             <button
