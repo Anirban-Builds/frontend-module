@@ -30,11 +30,15 @@
     width: 180px;
     font-size: 20px;
     padding: 18px 18px;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: 500;
     outline: none;
     border: none;
+    top: 0;
+    left: 0;
+    position: relative;
+    box-shadow: 0 3px 0 #04585e;
 }
 
 .projhttpc-submit-btn{
@@ -69,16 +73,22 @@
     background-color: #007bff;
 }
 
-.projhttpc-submit-btn:hover{
-    background-color: #066c73;
+.projhttpc-submit-btn:active, .projhttpc-reset-btn:active{
+   top:5px;
+   box-shadow:0 0 0 0;
 }
 
-.projhttpc-reset-btn:hover{
-    background: #0056b3;
+.dark .projhttpc-submit-btn{
+    box-shadow: 0 3px 0 #8af07d;
 }
 
-.dark .projhttpc-submit-btn, .dark .projhttpc-reset-btn{
-    border: 1px solid #ccc;
+.dark .projhttpc-reset-btn{
+    box-shadow: 0 3px 0 #4c9fe3;
+}
+
+.dark .projhttpc-submit-btn:active, .dark .projhttpc-reset-btn:active{
+   top:5px;
+   box-shadow:0 0 0 0;
 }
 
 

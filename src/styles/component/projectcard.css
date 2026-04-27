@@ -162,6 +162,9 @@
     border: none;
     outline: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .delete-project button{
@@ -177,10 +180,15 @@
 }
 
 .github-star button{
-    width: 39px;
+    height: 44px;
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .github-star button img{
-    height: 80%;
+    width: 100%;
+    height: auto;
 }
 
 .delete-project button:hover,

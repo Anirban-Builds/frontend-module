@@ -9,6 +9,7 @@ import EXPAND_IMG from "../../assets/images/expand.png"
 import SHRINK_IMG from "../../assets/images/shrink.png"
 import BACK_IMG from "../../assets/images/back.png"
 import CODE_IMG from "../../assets/images/code.png"
+// import GithubLogo from "../../assets/images/github-logo.png"
 import "../../styles/component/projrender.css"
 
 const ProjCardRender = ({project,
@@ -86,6 +87,7 @@ const ProjPageRender = () =>{
                 </button>
                 <button className="proj-code-btn"
                 onClick={()=>{window.open(p.repo, "_blank")}}>
+                    {/* <img src={GithubLogo} className="git-logo" /> */}
                    <img src={CODE_IMG}/>
                 </button>
             </div>}
