@@ -8,6 +8,7 @@
     top: 1rem;
     left: 0.5rem;
     z-index: 4;
+    user-select: none;
     }
 
 .ham-menu span {
@@ -79,6 +80,7 @@
     width: 10.2rem;
     z-index: 4;
     border: 1px solid #ccc;
+    user-select: none;
 }
 
 

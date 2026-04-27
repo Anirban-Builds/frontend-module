@@ -46,7 +46,9 @@ const Cnfmailform = ({setState, onSuccess}) => {
     <div className='cnf-form-div' ref={formRef}>
     {loading ?
     <div className='pwdresetbuff'>Sending Reset Link
-        <div className="spinner"></div>
+         <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+        </svg>
     </div> :
     <>
     <Cancelbutton
