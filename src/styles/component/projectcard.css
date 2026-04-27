@@ -6,6 +6,13 @@
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
+    user-select: none;
+}
+
+.projectcard-img .delete-project .spinner circle {
+  stroke: #eef;
+  stroke-width: 5;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.8));
 }
 
 .dark .projectcard{
@@ -92,7 +99,7 @@
     gap: 9px;
     padding: 4px 12px;
     background-color: #f8fafc;
-    margin-left: 0.25rem;
+    margin-left: 0.5rem;
 }
 
 .dark .proj-status{
@@ -131,7 +138,7 @@
 }
 
 .hf-space-link{
-    margin-left: 0.25rem;
+    margin-left: 0.3rem;
 }
 
 .delete-project{

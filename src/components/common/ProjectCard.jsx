@@ -94,8 +94,9 @@ const ProjectCard = ({imgUrl,
             {user.masteruser ?
             (<div className='delete-project'>
                 {loading[0] ?
-                <div className="spinner"></div>
-                :
+                <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+                </svg>                :
                 <button onClick={(e) => {
                 e.stopPropagation()
                 handleDeleteProject()
@@ -137,7 +138,9 @@ const ProjectCard = ({imgUrl,
             </div>
             <div className={`github-star ${starred ? "full" : ""}`}>
             {loading[1] ?
-            <div className="spinner"></div>
+             <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+                </svg>
             :<button
                 onClick={(e)=>{
                     e.stopPropagation()

@@ -40,8 +40,8 @@ const projColeridgener = ({popup, msg, setPopup, setMsg})=> {
     }
 
     return(<>
-    <div className="proj-div">
-        <div className="text-div">
+    <div className="projclrner-div">
+        <div className="projclrner-text-div">
         <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -49,9 +49,9 @@ const projColeridgener = ({popup, msg, setPopup, setMsg})=> {
         placeholder="Enter multi-line text..."
         />
         </div>
-        <div className="btn-div">
+        <div className="projclrner-btn-div">
             <button
-            className="submit-btn"
+            className="projclrner-submit-btn"
             onClick={()=>{
                 if(popup) setPopup(false)
                 setTimeout(()=>HandleSubmit(), 1)
@@ -60,7 +60,7 @@ const projColeridgener = ({popup, msg, setPopup, setMsg})=> {
                 Submit
             </button>
             <button
-            className="reset-btn"
+            className="projclrner-reset-btn"
             onClick={()=>HandleClear()}
             >
                 Reset

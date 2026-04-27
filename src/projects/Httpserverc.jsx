@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AsyncHandler from "../utils/AsyncHandler"
 import { ProjectLoading } from "../components/common/ProjCommonComp"
+import RESET_PNG from "../assets/images/reset.png"
 import "./styles/projhttpserverc.css"
 
 const projHttpsercerc = ({popup, msg, setPopup, setMsg})=> {
@@ -35,10 +36,10 @@ const HandleSubmit = AsyncHandler(async()=>{
     }
 
     return(<>
-    <div className="proj-div">
-        <div className="btn-div">
-            {!resultstatus &&<button
-            className={`submit-btn${loading ? " loading":""}`}
+    <div className="projhttpc-div">
+        <div className="projhttpc-btn-div">
+            {(!resultstatus && !loading) &&<button
+            className={`projhttpc-submit-btn${loading ? " loading":""}`}
             onClick={()=>{
                if(popup) setPopup(false)
                HandleSubmit()
@@ -46,16 +47,19 @@ const HandleSubmit = AsyncHandler(async()=>{
             >
                 Ping server
             </button>}
+            </div>
+            <div className="projhttpc-sub-div">
             {(loading || resultstatus) && <ProjectLoading
             resultstatus= {resultstatus}
             msg={msg}
             />}
             {resultstatus && <button
-            className="reset-btn"
+            className="projhttpc-reset-btn"
             onClick={()=>HandleClear()}
             >
-                Reset
+                <img src={RESET_PNG}/>
             </button>}
+
         </div>
 
     </div>
