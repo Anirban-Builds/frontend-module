@@ -3,10 +3,6 @@
   width: 50%;
 }
 
-.dark .dd-sel-wrp{
-  background-color: #27272f;
-}
-
 .dd-sel-wrp
 .dd-header {
   padding: 10px 12px;
@@ -20,18 +16,15 @@
   transition: 0.4s;
 }
 
-.dark .dd-sel-wrp .dd-header{
-  background: black;
-}
-
-.dd-sel-wrp
 .dd-header:hover {
   background: #f2f2f2;
 }
 
-.dark .dd-sel-wrp
-.dd-header:hover {
-  background: #1a1a1a;
+.dark .dd-header{
+  background-color: #1a1a1a;
+}
+.dark .dd-header:hover {
+  background: #27272f;
 }
 
 .dd-sel-wrp
@@ -62,26 +55,24 @@
   z-index: 1;
 }
 
-.dark .dd-sel-wrp
-.dd-list{
-  background: black;
+.dark .dd-list{
+  scrollbar-width: thin;
+  scrollbar-color: #444 #1a1a1a;
+  background: #25252f;
 }
 
-.dd-sel-wrp
 .dd-list li {
   padding: 8px 12px;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.dd-sel-wrp
 .dd-list li:hover {
   background: #eee;
 }
 
-.dark .dd-sel-wrp
-.dd-list li:hover{
-  background: #1a1a1a;
+.dark .dd-list li:hover{
+  background: #484646;
 }
 
 @media (max-width: 768px) {

@@ -1,15 +1,16 @@
 .login-layout{
-    background: var(--bg);
+    background: transparent;
     color: var(--text);
     width: 45%;
     min-height: 85vh;
     margin: 40px auto;
     border-radius: 40px;
     padding: 20px;
+    /* display: none; */
 }
 
 .dark .login-layout{
-    border: 1px solid #ccc;
+    border: 1px solid #555;
 }
 
 .login-layout.loading{
@@ -150,7 +151,6 @@
   z-index: 3;
 }
 
-
 .login-box .login-btn{
     margin-top: 15px;
     width: 100%;
@@ -232,7 +232,6 @@
     margin-top: 35px;
     width: 100%;
     text-align: center;
-
 }
 
 .signup-form-loginpage{
@@ -281,7 +280,6 @@ div.login-layout div.addprojbuff{
 }
 
 @media (max-width: 768px) {
-
   .login-layout {
     width: 95%;
     height: auto;

@@ -52,6 +52,7 @@ return (<>
                                 arr[i] = e.target.value
                                 setData(col.key, arr)
                         }}
+                         onWheel={(e) => e.target.blur()}
                       />
                             }
                             </td>
