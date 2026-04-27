@@ -132,7 +132,7 @@ const Login = () => {
         setLoading(false)
         setFailurestate(true)
         setPopup(true)
-        setMsg(errData.message ? `${errData.message} ⚠️` : "Login failed")
+        setMsg(errData.message ? `${errData.message} 🤯` : "Login failed")
         return
     }
 
@@ -187,9 +187,12 @@ const Login = () => {
 
     return (
         <>
-        {popup && <PopupCard message={msg}
+        {popup && <PopupCard
+        message={msg}
         setpopupState={setPopup}
-        failure={failurestate}/>}
+        failure={failurestate}
+        data-testid="popup-card"
+        />}
         {!loading &&
         (<div className="ham-login">
                 <Ham state={stateham} setState={setStateham}/>
