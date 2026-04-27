@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import Cancelbutton from "./Cancelbtn"
 import "../../styles/component/fileuploader.css"
+
 const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
 
     const[preview, setPreview] = useState(null)

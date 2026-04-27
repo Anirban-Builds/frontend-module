@@ -105,7 +105,7 @@ const ProjectSPM = ({popup, msg, setPopup, setMsg}) => {
                     <button
                         onClick={() => { if (popup) setPopup(false)
                             if(resultstatus) setResultstatus(false)
-                            HandleSubmit()
+                            setTimeout(()=>HandleSubmit(), 1)
                         }}
                         className="projspmbtn"
                     >Submit</button>

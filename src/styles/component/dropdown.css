@@ -3,6 +3,10 @@
   width: 50%;
 }
 
+.dark .dd-sel-wrp{
+  background-color: #27272f;
+}
+
 .dd-sel-wrp
 .dd-header {
   padding: 10px 12px;

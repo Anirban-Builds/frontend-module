@@ -1,11 +1,11 @@
-.proj-div{
+.projclrner-div{
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
 }
 
-.text-div{
+.projclrner-text-div{
     display: flex;
     width: 100%;
     align-items: center;
@@ -13,7 +13,7 @@
     border-radius: 12px;
 }
 
-.text-div textarea{
+.projclrner-text-div textarea{
     width: 90%;
     min-height: 120px;
     max-height: 300px;
@@ -27,49 +27,46 @@
     padding: 16px 12px 16px;
 }
 
-.dark .text-div textarea{
+.dark .projclrner-text-div textarea{
     background-color: rgba(78, 56, 56, 0.557);
     scrollbar-color: #444 #1a1a1a;
 }
 
 
-.btn-div{
+.projclrner-btn-div{
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
 }
 
-.btn-div .submit-btn, .btn-div .reset-btn{
-    background-color: rgb(11, 187, 128);
+.projclrner-submit-btn, .projclrner-reset-btn{
+    background-color: #14cedb;
     color: #fff;
     width: 120px;
     font-size: 20px;
-    padding: 18px 20px;
-    top: 0;
-    left: 0;
-    position: relative;
-    box-shadow: 3px 3px 0 rgb(1, 61, 41);
+    padding: 18px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    margin: 20px auto;
 }
 
-.dark .btn-div .submit-btn{
-    box-shadow: 3px 3px 0 #64eeb7;
+.projclrner-reset-btn{
+    background-color: #007bff;
 }
 
-.dark .btn-div .reset-btn{
-    box-shadow: 3px 3px 0 #59a6e6;
+.projclrner-submit-btn:hover{
+    background-color: #066c73;
 }
 
-.btn-div .reset-btn{
-    background-color: rgb(8, 89, 188);
-    box-shadow: 3px 3px 0 rgb(1, 9, 61);
+.projclrner-reset-btn:hover{
+    background: #0056b3;
 }
 
-.btn-div .reset-btn:active, .btn-div .submit-btn:active{
-   top:5px;
-   left:5px;
-   box-shadow:0 0 0 0;
+.dark .projclrner-submit-btn, .dark .projclrner-reset-btn{
+    border: 1px solid #ccc;
 }
-

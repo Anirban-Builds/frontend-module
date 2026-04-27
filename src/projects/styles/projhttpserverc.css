@@ -1,13 +1,61 @@
-.btn-div{
+.projhttpc-div{
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
 }
 
-.btn-div .submit-btn{
-    width: 200px;
-    margin: 4rem auto;
+.projhttpc-btn-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-div .submit-btn.loading{
+.projhttpc-sub-div{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.projhttpc-submit-btn, .projhttpc-reset-btn{
+    background-color: #14cedb;
+    color: #fff;
+    width: 180px;
+    font-size: 20px;
+    padding: 18px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    outline: none;
+    border: none;
+}
+
+.projhttpc-submit-btn{
+    align-self: center;
+}
+
+.projhttpc-reset-btn{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projhttpc-reset-btn img{
+    width: 30px;
+    height: auto;
+    filter: invert(1) brightness(1.4) contrast(1.2);
+}
+
+.projhttpc-submit-btn.loading{
     background-color: rgb(11, 187, 128);
     color: #fff;
     font-size: 20px;
@@ -17,14 +65,20 @@
     position: relative;
 }
 
-.btn-div .submit-btn.loading{
-    margin-bottom: -2rem;
+.projhttpc-reset-btn{
+    background-color: #007bff;
 }
 
-.btn-div .reset-btn{
-    margin-bottom: 2rem;
+.projhttpc-submit-btn:hover{
+    background-color: #066c73;
 }
 
-.btn-div .running-div{
-    margin-top: 5%;
+.projhttpc-reset-btn:hover{
+    background: #0056b3;
 }
+
+.dark .projhttpc-submit-btn, .dark .projhttpc-reset-btn{
+    border: 1px solid #ccc;
+}
+
+

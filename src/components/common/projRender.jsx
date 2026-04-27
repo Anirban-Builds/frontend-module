@@ -7,6 +7,8 @@ import { useProj } from "../../contexts/ProjectContext"
 import { ProjectComponentMap } from "../../projects/ProjectsCompMap"
 import EXPAND_IMG from "../../assets/images/expand.png"
 import SHRINK_IMG from "../../assets/images/shrink.png"
+import BACK_IMG from "../../assets/images/back.png"
+import CODE_IMG from "../../assets/images/code.png"
 import "../../styles/component/projrender.css"
 
 const ProjCardRender = ({project,
@@ -80,11 +82,11 @@ const ProjPageRender = () =>{
             {!full &&
                <div className="proj-banner-div">
                 <button className="proj-back-btn"
-                onClick={()=>{navigate(-1)}}>{"←"}
+                onClick={()=>{navigate(-1)}}><img src={BACK_IMG}/>
                 </button>
                 <button className="proj-code-btn"
                 onClick={()=>{window.open(p.repo, "_blank")}}>
-                    {"</>"}
+                   <img src={CODE_IMG}/>
                 </button>
             </div>}
             <div className={`fullsc-div ${full ? "active" : ""}`}>
