@@ -4,7 +4,7 @@ import "../../styles/component/popupcard.css"
 const PopupCard = ({message, setpopupState, failure=false}) => {
     useEffect(
         () => {
-            const timer = setTimeout(() =>{setpopupState(false)}, 5000)
+            const timer = setTimeout(() =>{setpopupState(false)}, 5500)
             return () => {clearTimeout(timer)}
         },[])
 

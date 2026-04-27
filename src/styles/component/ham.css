@@ -9,6 +9,7 @@
     left: 0.5rem;
     z-index: 4;
     user-select: none;
+    background: rgba(0, 0, 0, 0.2);
     }
 
 .ham-menu span {
@@ -26,7 +27,7 @@
 }
 
 .ham-menu:hover{
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .ham-menu:hover::after{
