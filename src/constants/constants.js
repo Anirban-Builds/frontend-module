@@ -4,7 +4,7 @@ export const PROJ_GET_TITLE = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects
 export const TAGS = ['ML', 'Fullstack', 'C', 'Web3',
     'Python', 'React', 'Express', 'Node', 'MongoDB', 'Electrical']
 export const PATH_DEL_PROJ = `${import.meta.env.VITE_BACKEND_BASE_URI}/projects/delete-project`
-export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email,public_repo,read:user,repo`
+export const githubAuthURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(import.meta.env.VITE_GIT_URL + '/login')}&scope=user:email,public_repo,read:user,repo,delete_repo`
 export const PATH_GH_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/gh-login?code=`
 export const PATH_USER_LOGIN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/login`
 export const PATH_USER_SIGNUP = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/signup`
@@ -24,4 +24,5 @@ export const PATH_OTP_USER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/usr
 export const PATH_OTP_GHUSER = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/ghusr-otp`
 export const PATH_VER_TOKEN = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/verify-token`
 export const PATH_STAR_GIT_REPO = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/star-repo`
+export const PATH_FORK_GIT_REPO = `${import.meta.env.VITE_BACKEND_BASE_URI}/users/fork-repo`
 export const MAIL_ID = "contact@anirbanbuilds.online"

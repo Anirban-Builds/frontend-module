@@ -26,6 +26,7 @@
     position: relative;
     border-bottom: 1px solid rgb(95, 99, 104);
 }
+
 .projectcard-img img{
     display: block;
     width: 100%;
@@ -67,7 +68,7 @@
 }
 
 .dark .projectcard-tags > div:hover{
-    background-color: #0d0d18;
+    background-color: #3f3f4b;
 }
 
 .line-break{
@@ -96,7 +97,7 @@
     height: 38px;
     border-radius: 999px;
     border: 1px solid #ccc;
-    gap: 9px;
+    gap: 7px;
     padding: 4px 12px;
     background-color: #f8fafc;
     margin-left: 0.5rem;
@@ -112,16 +113,12 @@
 }
 
 .status-symbol{
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background-color: transparent;
   border: none;
   flex-shrink: 0;
-}
-
-.dark .status-symbol{
-    border: 1px solid #ccc;
 }
 
 .status-symbol.running { background-color: #22c55e; }
@@ -131,7 +128,11 @@
 .status-symbol.paused { background-color: #f1f50b; }
 .status-symbol.loading {background-color: #cbd5e1; }
 
-.hf-space-link, .github-star{
+.dark .proj-status:hover{
+    background-color: #3f3f4b;
+}
+
+.hf-space-link, .github-star, .github-fork{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,13 +148,19 @@
     right: 5px;
 }
 
-.github-star{
+.github-fork{
     margin-left: auto;
+    padding-top: 0.25rem;
+}
+
+.github-star{
+    margin-left: 0;
     padding-right: 0.5rem;
 }
 
 .hf-space-link button,
 .delete-project button,
+.github-fork button,
 .github-star button{
     border-radius: 50%;
     width: 37px;
@@ -174,18 +181,39 @@
 
 .hf-space-link button img,
 .delete-project button img,
+.github-fork button img,
 .github-star button img{
     width: 100%;
     height: auto;
 }
 
-.github-star button{
-    height: 44px;
-    width: 44px;
+.github-fork button, .github-star button{
+    height: 46px;
+    width: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.github-star button{
+    height: 44px;
+    width: 44px;
+}
+
+.github-fork.full button img{
+    background-color: rgb(65, 240, 65);
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.dark .github-fork button img{
+    filter: invert(1);
+}
+
+.dark .github-fork.full button img{
+    filter: none;
+}
+
 .github-star button img{
     width: 100%;
     height: auto;
@@ -193,6 +221,7 @@
 
 .delete-project button:hover,
 .hf-space-link button:hover,
+.github-fork button:hover,
 .github-star button:hover{
     background: #dee;
 }
@@ -205,6 +234,11 @@
 
 .dark .delete-project button:hover,
 .dark .hf-space-link button:hover,
+.dark .github-fork button:hover,
 .dark .github-star button:hover{
     background: #666;
+}
+
+.dark .github-fork.full button img{
+    border: 1px solid #ccc;
 }

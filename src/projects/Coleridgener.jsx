@@ -46,7 +46,7 @@ const projColeridgener = ({popup, msg, setPopup, setMsg})=> {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={5}
-        placeholder="Enter multi-line text..."
+        placeholder="Enter scientific text to extract dataset..."
         />
         </div>
         <div className="projclrner-btn-div">

@@ -108,7 +108,22 @@ const Projects = () => {
             return
         }
         else{
-            usePopup(`Project ${starred ? "starred":"unstarred"} successfully`, false)
+            usePopup(`Project ${starred ? "starred":"unstarred"} successfully 🙂`, false)
+            return
+        }
+    }
+
+    const onProjForkfunc = (res, ghuser, starred=false)=>{
+        if(!res){
+            if(!ghuser){
+             usePopup(`Github account required 😮`, true)
+             return
+            }
+            usePopup(`Project failed to ${starred ? "fork":"delete"} ☹️`, true)
+            return
+        }
+        else{
+            usePopup(`Project ${starred ? "forked":"deleted"} successfully 🙂`, false)
             return
         }
     }
@@ -203,6 +218,7 @@ const Projects = () => {
             fetchProjects={fetchProjects}
             tags={clrtagval}
             onProjStarfunc={onProjStarfunc}
+            onProjForkfunc={onProjForkfunc}
             />)}
         </div>
 {totalPages > 1 && (

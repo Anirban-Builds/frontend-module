@@ -18,6 +18,7 @@ const ProjCardRender = ({project,
                         fetchProjects,
                         tags,
                         onProjStarfunc,
+                        onProjForkfunc
                         }) => {
     return (
         <>
@@ -36,6 +37,7 @@ const ProjCardRender = ({project,
                 tags={tags}
                 repo={elem.repo}
                 onProjStarfunc={onProjStarfunc}
+                onProjForkfunc={onProjForkfunc}
                 />
                 ))
             }

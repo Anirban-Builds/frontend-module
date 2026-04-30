@@ -1,12 +1,11 @@
 .login-layout{
-    background: transparent;
+    background: var(--bg);
     color: var(--text);
     width: 45%;
     min-height: 85vh;
     margin: 40px auto;
     border-radius: 40px;
     padding: 20px;
-    /* display: none; */
 }
 
 .dark .login-layout{

@@ -61,7 +61,8 @@ const Login = () => {
                 masteruser,
                 usertype,
                 firstload,
-                repolist
+                repolist,
+                forklist
             } = UserData.data
             const userStr = localStorage.getItem("user")
             const curuser = userStr ? JSON.parse(userStr) : null
@@ -86,6 +87,7 @@ const Login = () => {
                 firstload,
                 usertype,
                 repolist,
+                forklist,
                 cookieset: 1
             })}
             localStorage.setItem('cookieset', '1')
@@ -148,7 +150,8 @@ const Login = () => {
                 masteruser,
                 usertype,
                 avatar,
-                repolist
+                repolist,
+                forklist,
             } = UserData.data;
 
             setUser({
@@ -163,6 +166,7 @@ const Login = () => {
                 usertype,
                 avatar,
                 repolist,
+                forklist,
                 cookieset: 1
             })
         localStorage.setItem('cookieset', '1')

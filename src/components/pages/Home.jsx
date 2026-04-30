@@ -19,6 +19,7 @@ const Home = () => {
     const[searchval, setSearchValue] = useState("")
     const[popupfailure, setPopupFailure] = useState(false)
     const [suggest, setSuggest] = useState([])
+    const [status, setStatus] = useState('')
 
     useEffect(() => {
     if (user.cookieset === 1){
@@ -79,6 +80,19 @@ const Home = () => {
     navigate(`/projects/${id}`)
   }
 
+useEffect(()=>{
+  const fetchsiteStatus = async()=> {
+  const res = await fetch('https://api.instatus.com/v1/pages', {
+  headers: {
+    Authorization: `Bearer ${import.meta.env.VITE_INSTATUS_KEY}`
+  }
+})
+const data = await res.json()
+setStatus(data[0].status)
+}
+fetchsiteStatus()
+}, [])
+
 return (
   <>
     <Ham state={stateham} setState={setStateham}/>
@@ -119,6 +133,18 @@ return (
     }
     </div>}
     </div>
+    <div className="site-status-div"
+     onClick={()=>{window.open('https://anirbanbuilds.instatus.com/', '_blank')}}
+    >
+    <div className="status-link">
+      <div className={`status-symbol ${status ? status.toLowerCase() : 'loading'}`}></div>
+      <div className="status-word"
+      >
+      site status : {`${status.toLowerCase()}` || 'Loading'}
+      </div>
+    </div>
+
+      </div>
     </div>
 </>)}
 
