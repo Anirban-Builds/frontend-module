@@ -8,7 +8,8 @@ import BIN_IMG from "../../assets/images/bin.png"
 import OPEN_IMG from "../../assets/images/link.png"
 import STAR_IMG from "../../assets/images/star.png"
 import STAR_FULL_IMG from "../../assets/images/star-full.png"
-import { PATH_DEL_PROJ, PATH_STAR_GIT_REPO } from '../../constants/constants'
+import FORK_IMG from "../../assets/images/fork.svg"
+import { PATH_DEL_PROJ, PATH_STAR_GIT_REPO, PATH_FORK_GIT_REPO } from '../../constants/constants'
 import '../../styles/component/projectcard.css'
 
 const ProjectCard = ({imgUrl,
@@ -21,12 +22,15 @@ const ProjectCard = ({imgUrl,
                       fetchProjects,
                       tags,
                       repo,
-                      onProjStarfunc}) => {
+                      onProjStarfunc,
+                      onProjForkfunc
+                    }) => {
     const {user} = useUser()
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(new Array(2).fill(false))
+    const [loading, setLoading] = useState(new Array(3).fill(false))
     const [hfstatus, setHfStatus] = useState('')
     const [starred, setStarred] = useState(user.repolist?.some(id => id.toString() === projId.toString()))
+    const [forked, setForked] = useState(user.forklist?.some(id => id.toString() === projId.toString()))
 
     const handleNavigate = () =>{
         const id = projtitle.split(" ").slice().join("-")
@@ -72,6 +76,31 @@ const ProjectCard = ({imgUrl,
         onProjStarfunc(res.ok, true, starstatus)
         setStarred(starstatus)
         setLoading(prev => ({ ...prev, [1]: false }))
+    })
+
+    const handleForkRepoClick = AsyncHandler(async()=>{
+        if(user.cookieset ===-1 ||!user.usertype[1]){
+              onProjForkfunc(false, false, false)
+            return
+        }
+        setLoading(prev => ({ ...prev, [2]: true }))
+        const parts = repo.split("/")
+        const owner = parts[3]
+        const repo_ = parts[4].replace('.git', '')
+        const payload =  { owner : owner, repo: repo_, projId : projId }
+
+         const res = await FormSubmit(PATH_FORK_GIT_REPO, payload, false, 'POST', true)
+         if(!res.ok) {
+            setLoading(prev => ({ ...prev, [2]: false }))
+            onProjForkfunc(false, false, false)
+            return
+        }
+        const data = await res.json()
+        const forkstatus = data.data?.isForked
+        onProjForkfunc(res.ok, true, forkstatus)
+        setForked(forkstatus)
+        setLoading(prev => ({ ...prev, [2]: false }))
+
     })
 
     useEffect(()=>{
@@ -135,6 +164,22 @@ const ProjectCard = ({imgUrl,
                     <img src={OPEN_IMG}>
                     </img>
                     </button>
+            </div>
+            <div className={`github-fork ${forked ? "full" : ""}`}>
+                {
+                    loading[2] ?
+                    <svg className="spinner" viewBox="25 25 50 50">
+                <circle cx="50" cy="50" r="20"/>
+                </svg>
+                :<button
+                onClick={(e)=>{
+                    e.stopPropagation()
+                    handleForkRepoClick()
+                }}
+                >
+                    <img src={FORK_IMG}/>
+                </button>
+                }
             </div>
             <div className={`github-star ${starred ? "full" : ""}`}>
             {loading[1] ?

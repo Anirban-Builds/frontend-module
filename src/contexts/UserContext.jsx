@@ -44,6 +44,7 @@ const UserContextWrapper = ({ children })=>{
     masteruser,
     usertype,
     repolist,
+    forklist,
   } = userData.data
   setUser({ _id,
     username,
@@ -57,6 +58,7 @@ const UserContextWrapper = ({ children })=>{
     avatar,
     usertype,
     repolist,
+    forklist,
     cookieset: 1})
 })
 
