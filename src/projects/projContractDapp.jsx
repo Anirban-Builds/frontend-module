@@ -32,7 +32,7 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
     const [deleteLoading, setDeleteLoading] = useState({})
     const location = useLocation()
 
-    const HF_URL = "http://anirban0011-blockchain-contract-dapp.hf.space/contracts"
+    const HF_URL = "https://anirban0011-blockchain-contract-dapp.hf.space/contracts"
 
     useEffect(() => {
     if(location.state?.msg) {
