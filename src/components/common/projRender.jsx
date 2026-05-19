@@ -53,6 +53,7 @@ const ProjPageRender = () =>{
     const [full, setFull] = useState(false)
     const [popup, setPopup] = useState(false)
     const [msg, setMsg] = useState("")
+    const [failurestate, setFailureState] = useState(true)
 
     projectId = projectId.
             split("-").
@@ -72,7 +73,7 @@ const ProjPageRender = () =>{
                 popup && <PopupCard
                     message={msg}
                     setpopupState={setPopup}
-                    failure={true}
+                    failure={failurestate}
                 />
         }
         <div
@@ -93,7 +94,8 @@ const ProjPageRender = () =>{
                    <img src={CODE_IMG}/>
                 </button>
             </div>}
-            <div className={`fullsc-div ${full ? "active" : ""}`}>
+            <div className={`fullsc-div ${full ? "active" : ""}`}
+            >
                 <button
             onClick={toggleFullscreen}>
                 {!full ? <img src={EXPAND_IMG} />:
@@ -110,6 +112,7 @@ const ProjPageRender = () =>{
                 setPopup = {setPopup}
                 setMsg = {setMsg}
                 full = {full}
+                setFailureState = {setFailureState}
                 />
             </div>
         </div>

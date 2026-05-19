@@ -2,9 +2,14 @@ import { useState, useEffect, useRef } from "react"
 import Cancelbutton from "./Cancelbtn"
 import "../../styles/component/fileuploader.css"
 
-const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
+const Fileuploader = ({submitState,
+                        setState,
+                        uploadText,
+                        inputId,
+                        file,
+                        accept="image/*"}) => {
 
-    const[preview, setPreview] = useState(null)
+    const[preview, setPreview] = useState({type : null, url : null, name : null})
     const [dragOver, setDragOver] = useState(false)
     const inputRef = useRef(null)
 
@@ -15,7 +20,11 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
 
     const handleFile = (file) =>{
         setState(file)
-        setPreview(URL.createObjectURL(file))
+         if (file.type.startsWith("image/")) {
+        setPreview({ type: "image", url: URL.createObjectURL(file) })
+        } else {
+            setPreview({ type: "file", name: file.name })
+        }
     }
 
     const handleDrag = (e) => {
@@ -31,7 +40,7 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
 
     useEffect(() => {
     if (!file) {
-        setPreview(null)
+        setPreview({type : null, url : null, name : null})
          if (inputRef.current) inputRef.current.value = ""
     }
     else if (file instanceof Blob) handleFile(file)
@@ -43,18 +52,22 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
         onDragOver={handleDrag}
         onDragLeave={()=>{setDragOver(false)}}
         onDrop={handleDrop}>
-
-        {preview ? (
+        {preview.type ?
+        (
         <div className="preview">
-        <img src={preview} alt="Preview"/>
+        {preview.type === "image" ?
+        <img src={preview.url} alt="Preview" /> :
+         <div className="file-name">📄 {preview.name}</div>}
+
         {!submitState ? "":
         <Cancelbutton
         className="cancel-btn"
         setState={() => {
-        setPreview(null)
+        setPreview({type : null, url : null, name : null})
         setState(null)}}
         make_elem_null={true}
-        elem_id={inputId}/>}</div>) :
+        elem_id={inputId}/>}
+        </div>) :
         (<div className="custom-file-upload"
         onClick={() => document.getElementById(inputId).click()}>
         {uploadText? uploadText : "Upload Cover Image"}
@@ -62,7 +75,7 @@ const Fileuploader = ({submitState, setState, uploadText, inputId, file}) => {
         <input
         ref={inputRef}
         type="file"
-        accept="image/*"
+        accept={accept}
         onChange={handleFileChange}
         id={inputId}
         hidden />

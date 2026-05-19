@@ -4,7 +4,7 @@
   border: 3px dashed #ccc;
   border-radius: 10px;
   text-align: center;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: background 0.3s ease;
 }
 
@@ -15,6 +15,13 @@
 .drop-zone.drag-over {
   background: rgba(0, 123, 255, 0.1);
   border-color: #007bff;
+}
+
+.preview .file-name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .custom-file-upload {
@@ -55,7 +62,6 @@
   object-fit: cover;
 }
 
-
 .preview .cancel-btn{
   position: absolute;
   top: -19px;
@@ -71,23 +77,24 @@
   color: #fff;
   justify-content: center;
   display: flex;
+  z-index: 5;
 }
 
 @media (max-width: 768px) {
 
   .drop-zone {
-    height: 140px;           /* smaller height */
+    height: 140px;
     border-width: 2px;
   }
 
   .custom-file-upload {
-    margin-top: 45px;        /* center inside smaller box */
+    margin-top: 45px;
     padding: 6px 14px;
     font-size: 14px;
   }
 
   .preview img {
-    object-fit: contain;     /* prevent aggressive crop */
+    object-fit: contain;
   }
 
   .preview .cancel-btn {

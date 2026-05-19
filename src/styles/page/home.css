@@ -108,10 +108,10 @@
 
 .site-status-div{
   position: fixed;
-  width: 180px;
+  width: fit-content;
   left: 0px;
   bottom: 10px;
-  height: 30px;
+  height: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,10 +132,10 @@
   border: 1px solid #ccc;
   border-radius: 99px;
   background: rgba(255, 255, 255, 0.3);
-
+  padding: 0 10px;
 }
 
-.status-symb{
+.status-symbol{
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -145,11 +145,15 @@
   animation: pulse 2s infinite;
 }
 
-.status-symb.loading {background-color: #cbd5e1; }
+.status-symbol.loading {background-color: #cbd5e1; }
 .status-symbol.up { background-color: #22c55e;
   box-shadow: 0 0 0 4px rgba(6, 86, 35, 0.18);
 }
-.status-symb.hasissues, .status-symb.undermaintenance { background-color: #f28807;}
+.status-symbol.hasissues, .status-symbol.undermaintenance { background-color: #f28807;}
+
+.status-word{
+  padding: 0 5px;
+}
 
 @media(max-width: 768px){
   .srch-suggest{

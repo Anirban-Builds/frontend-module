@@ -198,7 +198,7 @@ const Login = () => {
         data-testid="popup-card"
         />}
         {!loading &&
-        (<div className="ham-login">
+        (<div className="ham-login" style={{ zIndex: signUp ? 1 : 5 }}>
                 <Ham state={stateham} setState={setStateham}/>
         </div>)
         }
@@ -206,7 +206,6 @@ const Login = () => {
         <div className="signup-form-loginpage">
         <SignupForm setState={setSignUp}/>
         </div>}
-
         {
             cnfstate && (
                 <div className="cnf-mail-form">
@@ -220,9 +219,7 @@ const Login = () => {
                 </div>
             )
         }
-
         <div className={`login-layout ${loading ? "loading" : ""}`}>
-
                 {loading ? (
                 <div className='addprojbuff'>Logging In
                 <svg className="spinner" viewBox="25 25 50 50">

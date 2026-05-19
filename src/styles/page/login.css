@@ -10,6 +10,8 @@
 
 .dark .login-layout{
     border: 1px solid #555;
+  background-color: #0e1b29be;
+
 }
 
 .login-layout.loading{
@@ -25,9 +27,13 @@
 }
 
 .ham-login{
-    position: fixed;
-    left : 2px;
-    z-index: 4;
+   position: fixed;
+   z-index: 5;
+   background: transparent;
+}
+
+.ham-login .navbar{
+  top: 5px;
 }
 
 .login-box{
@@ -40,8 +46,7 @@
     text-align: center;
 }
 
-.login-box .plain-login
-{
+.login-box .plain-login{
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -300,12 +305,16 @@ div.login-layout div.addprojbuff{
   }
 
   .login-box .username .username-field,
-  .login-box .password .pwd-field {
+  .login-box .password .pwd-inner-div {
     width: 100%;
     height: 48px;
     font-size: 18px;
     padding-left: 10px;
   }
+
+.login-box .password .pwd-inner-div {
+   padding-left: 0;
+}
 
   .login-box .login-btn button,
   .login-box .github-login button {
@@ -341,12 +350,6 @@ div.login-layout div.addprojbuff{
   .ham-login .ham-menu{
     top: 20px;
     left: 15px;
-    border: 1px solid var(--text);
-    background-color: var(--bg);
-  }
-
-  .ham-login .ham-menu span{
-    background-color: var(--text)
   }
 
   .login-layout.loading{

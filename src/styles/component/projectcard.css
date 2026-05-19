@@ -201,9 +201,14 @@
 }
 
 .github-fork.full button img{
-    background-color: rgb(65, 240, 65);
+    filter: invert(1);
+    background-color: rgb(190, 15, 190);
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
+}
+
+.github-fork.full button img:hover{
+    background-color: rgb(203, 70, 203);
 }
 
 .dark .github-fork button img{
@@ -211,7 +216,13 @@
 }
 
 .dark .github-fork.full button img{
-    filter: none;
+    filter: invert(1);
+    background-color: rgb(190, 15, 190);
+    border: 1px solid black;
+}
+
+.dark .github-fork.full button img:hover{
+    background-color: rgb(161, 8, 161);
 }
 
 .github-star button img{
@@ -219,11 +230,26 @@
     height: auto;
 }
 
-.delete-project button:hover,
+.hf-space-link button img:hover,
+.github-fork button img:hover,
+.github-star button img:hover{
+    width: 95%;
+    height: auto;
+}
+
 .hf-space-link button:hover,
-.github-fork button:hover,
+.github-fork:not(.full) button:hover,
 .github-star button:hover{
     background: #dee;
+}
+
+.delete-project button:hover{
+    border: 1px solid var(--text);
+}
+
+.delete-project button img:hover,
+.dark .delete-project button img:hover{
+    filter: brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7481%) hue-rotate(1deg);
 }
 
 .dark .delete-project button img,
@@ -232,13 +258,8 @@
     filter: invert(1) brightness(1.4) contrast(1.2);
 }
 
-.dark .delete-project button:hover,
 .dark .hf-space-link button:hover,
-.dark .github-fork button:hover,
+.dark .github-fork:not(.full) button:hover,
 .dark .github-star button:hover{
     background: #666;
-}
-
-.dark .github-fork.full button img{
-    border: 1px solid #ccc;
 }

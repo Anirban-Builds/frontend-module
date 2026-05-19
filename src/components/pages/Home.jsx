@@ -140,7 +140,7 @@ return (
       <div className={`status-symbol ${status ? status.toLowerCase() : 'loading'}`}></div>
       <div className="status-word"
       >
-      site status : {`${status.toLowerCase()}` || 'Loading'}
+      site status : {`${status.toLowerCase()}` || 'loading'}
       </div>
     </div>
 

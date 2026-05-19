@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import Cancelbutton from "./Cancelbtn"
 import "../../styles/component/popupcard.css"
+
 const PopupCard = ({message, setpopupState, failure=false}) => {
     useEffect(
         () => {

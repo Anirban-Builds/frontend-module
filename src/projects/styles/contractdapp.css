@@ -1,0 +1,512 @@
+.projcontdapp-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 2.5rem;
+}
+
+.projcontdapp-wc-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    gap: 1rem;
+}
+
+.projcontdapp-wc-div.open{
+    padding-left: 0;
+    justify-content: center;
+}
+
+.projcontdapp-faucet-div{
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.dark .projcontdapp-faucet-div{
+    background: #37373f;
+}
+
+.dark .projcontdapp-faucet-div:hover{
+    background: #27272f;
+    border: none;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.projcontdapp-faucet-div img{
+    height: 100%;
+    width: 100%;
+}
+
+.projcontdapp-faucet-div:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+}
+
+.projcontdapp-sign-div, .projcontdapp-list-div
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #dee;
+    border-radius: 20px;
+}
+
+.projcontdapp-list-div .spinner{
+    width: 25px;
+    height: 25px;
+}
+
+.projcontdapp-msg-div .spinner{
+    width: 30px;
+    height: 30px;
+}
+
+.dark .projcontdapp-sign-div, .dark .projcontdapp-list-div{
+    background: #27272f;
+}
+
+.projcontdapp-list-div > div:not(.projcontdapp-list-head-div, .projcontdapp-contract-desc-div){
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 16px;
+}
+
+.projcontdapp-sign-header, .projcontdapp-list-head-div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    box-shadow: 0 4px 8px 2px rgb(0,0,0,0.5);
+    background-color: #eee;
+    border-radius: inherit;
+}
+
+.dark .projcontdapp-sign-header, .dark .projcontdapp-list-head-div{
+    background-color: #404045;
+}
+
+.projcontdapp-sign-header h3, .projcontdapp-list-head-div h3{
+    margin-left: 1.5rem;
+    font-size: 20px;
+    color: rgb(36, 36, 209);
+}
+
+.dark .projcontdapp-sign-header h3, .dark .projcontdapp-list-head-div h3{
+    color: aqua;
+}
+
+.projcontdapp-sign-header button, .projcontdapp-list-head-div button{
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projcontdapp-sign-header button > div, .projcontdapp-list-head-div button > div{
+    position: relative;
+    width: 35px;
+    height: 35px;
+}
+
+.projcontdapp-sign-header button > div > span,
+.projcontdapp-list-head-div button > div > span {
+  position: absolute;
+  background: #3838e4;
+  top: 50%;
+  left: 50%;
+  border-radius: 99px;
+}
+
+.dark .projcontdapp-sign-header button > div > span,
+.dark .projcontdapp-list-head-div button > div > span {
+    background: aqua;
+}
+
+.projcontdapp-sign-header button > div > span:nth-child(1),
+.projcontdapp-list-head-div button > div > span:nth-child(1) {
+  width: 100%;
+  height: 3px;
+  transform: translate(-50%, -50%);
+}
+
+.projcontdapp-sign-header button > div > span:nth-child(2),
+.projcontdapp-list-head-div button > div > span:nth-child(2) {
+  width: 3.5px;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease;
+}
+
+.projcontdapp-sign-header.open > button > div > span:nth-child(2),
+.projcontdapp-list-head-div.open > button > div > span:nth-child(2) {
+  opacity: 0;
+}
+
+.projcontdapp-sign-div-inner, .projcontdapp-contract-desc-div{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.projcontdapp-contract-desc-div{
+    flex-direction: row;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 8px 16px;
+    margin: 10px auto;
+    box-shadow: 0 0 4px 2px rgb(0, 0, 0, 0.1);
+    gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.projcontdapp-agree-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.projcontdapp-msg-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 0 0 4px 2px rgb(0,0,0,0.1);
+}
+
+.dark .projcontdapp-msg-div{
+    box-shadow: 0 0 4px 2px rgb(255,255,255,0.1);
+}
+
+.projcontdapp-msg-div:hover{
+    box-shadow: 0 0 4px 2px rgb(0,0,0,0.3);
+}
+
+.dark .projcontdapp-msg-div:hover{
+    box-shadow: 0 0 4px 2px rgb(255,255,255,0.3);
+}
+
+.projcontdapp-msg-div img{
+    height: 35px;
+    width: 35px;
+}
+
+.projcontdapp-decide-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.projcontdapp-agree-div button{
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    gap: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.projcontdapp-agree-div button img{
+    width: 22px;
+    height: 22px;
+    filter: invert(1);
+    background: transparent;
+}
+
+.projcontdapp-agree-div .accept-btn, .dark .projcontdapp-agree-div .accept-btn:hover{
+    background: #0fe17f;
+}
+
+.projcontdapp-agree-div .accept-btn:hover, .dark .projcontdapp-agree-div .accept-btn{
+    background: #069a55;
+}
+
+.projcontdapp-agree-div .reject-btn, .dark .projcontdapp-agree-div .reject-btn:hover{
+    background: #1bd0d0;
+}
+
+.projcontdapp-agree-div .reject-btn:hover, .dark .projcontdapp-agree-div .reject-btn{
+    background: #2c8be3;
+}
+
+.dark .projcontdapp-contract-desc-div{
+    background-color: #404041;
+}
+
+.projcontdapp-contract-desc-div:hover{
+    box-shadow: 0 0 6px 4px rgb(0, 0, 0, 0.3);
+}
+
+.projcontdapp-contract-desc-div .filename{
+    font-size: 19px;
+    white-space: nowrap;
+}
+
+.projcontdapp-contract-desc-div .status,
+.projcontdapp-contract-desc-div .created,
+.projcontdapp-contract-desc-div .signed {
+    border: 1px solid var(--text);
+    border-radius: 99px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    white-space: nowrap;
+    height: 30px;
+    font-size: 14px;
+}
+
+.projcontdapp-contract-desc-div .status{
+    border: none;
+    background: #e369c8;
+    color: #9a0a3c;
+}
+
+.projcontdapp-contract-desc-div .status.signed{
+    background: #60eaae;
+    color: #114343;
+}
+
+.projcontdapp-contract-desc-div .ipfs,
+.projcontdapp-contract-desc-div .del,
+.projcontdapp-contract-desc-div .block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height: 45px;
+    width: 45px;
+}
+
+.projcontdapp-contract-desc-div .ipfs:hover,
+.projcontdapp-contract-desc-div .del:hover,
+.projcontdapp-contract-desc-div .block:hover{
+    box-shadow: 0 0 4px 2px rgb(0,0,0,0.25);
+}
+
+.dark .projcontdapp-contract-desc-div .ipfs:hover,
+.dark .projcontdapp-contract-desc-div .del:hover,
+.dark .projcontdapp-contract-desc-div .block:hover{
+    box-shadow: 0 0 4px 2px rgb(255,255,255,0.25);
+}
+
+.projcontdapp-contract-desc-div .ipfs img,
+.projcontdapp-contract-desc-div .del img,
+.projcontdapp-contract-desc-div .block img{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.dark .projcontdapp-contract-desc-div .ipfs img,
+.dark .projcontdapp-msg-div img,
+.dark .projcontdapp-contract-desc-div .del img,
+.dark .projcontdapp-contract-desc-div .block img{
+    filter: invert(1);
+}
+
+.projcontdapp-contract-desc-div .del img:hover,
+.dark .projcontdapp-contract-desc-div .del img:hover{
+    filter: brightness(0) saturate(100%) invert(18%) sepia(99%) saturate(7481%) hue-rotate(1deg);
+}
+
+.projcontdapp-text-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.projcontdapp-text-div textarea{
+    outline: none;
+    border-radius: 10px;
+    min-height: 150px;
+    max-height: 350px;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 16px;
+    resize: vertical;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    color: var(--text);
+    background-color: #ffe;
+}
+
+.dark .projcontdapp-text-div textarea{
+    background-color: rgba(78, 56, 56, 0.557);
+    scrollbar-color: #444 #1a1a1a;
+}
+
+.projcontdapp-or-divider{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    color: var(--text);
+    margin: 10px 0;
+    width: 100%;
+}
+
+.projcontdapp-or-divider::before,
+.projcontdapp-or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #888;
+}
+
+.projcontdapp-or-divider::before {
+  margin-right: .75em;
+}
+.projcontdapp-or-divider::after {
+  margin-left: .75em;
+}
+
+.projcontdapp-file-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #ffe;
+    border-radius: 10px;
+}
+
+.projcontdapp-mail-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+}
+
+.projcontdapp-mail-div label{
+    width: 25%;
+    white-space: nowrap;
+}
+
+.projcontdapp-mail-div input{
+    width: 50%;
+    border: none;
+    color: var(--text);
+    outline: none;
+}
+
+.dark .projcontdapp-mail-div input{
+    background: rgba(78, 56, 56, 0.557);
+}
+
+.projcontdapp-mail-div input:hover{
+    outline: 1px solid #aaa;
+}
+
+.projcontdapp-sub-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projcontdapp-sub-div button{
+    color: #fff;
+    background: #0fe17f;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 16px;
+    width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dark .projcontdapp-sub-div button{
+    background: #069a55;
+}
+
+.projcontdapp-sub-div button:hover{
+    background: #069a55;
+}
+
+.dark .projcontdapp-sub-div button:hover{
+    background: #0fe17f;
+}
+
+@media (max-width: 768px) {
+
+.projcontdapp-wc-div{
+    flex-direction: column;
+}
+
+.projcontdapp-mail-div{
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+.projcontdapp-mail-div input {
+        width: 90%;
+    }
+
+.projcontdapp-contract-desc-div {
+flex-direction: column;
+gap: 4px
+}
+
+
+
+}
+
+
+
+
+
