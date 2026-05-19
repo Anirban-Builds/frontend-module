@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { UserContextWrapper } from "./src/contexts/UserContext"
 import { ProjContextWrapper } from "./src/contexts/ProjectContext"
 import { ThemeContextWrapper } from "./src/contexts/ThemeContext"
@@ -11,6 +12,7 @@ root.render(
                 <UserContextWrapper>
                         <ProjContextWrapper>
              <App/>
+             <SpeedInsights />
                         </ProjContextWrapper>
                 </UserContextWrapper>
         </ThemeContextWrapper>
