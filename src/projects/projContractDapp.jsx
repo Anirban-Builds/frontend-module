@@ -15,7 +15,6 @@ import CORRECT_IMG from "../assets/images/correct.png"
 import WRONG_IMG from "../assets/images/wrong.png"
 import BLOCKCHAIN_IMG from "../assets/images/blockchain.png"
 
-
 const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
     const [wallet, setWallet] = useState({ isConnected: false, address: null })
     const[text, setText] = useState("")
@@ -33,8 +32,7 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
     const [deleteLoading, setDeleteLoading] = useState({})
     const location = useLocation()
 
-
-    const HF_URL = "http://localhost:7860/contracts"
+    const HF_URL = "http://anirban0011-blockchain-contract-dapp.hf.space/contracts"
 
     useEffect(() => {
     if(location.state?.msg) {
@@ -349,7 +347,7 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
                     :!contract.status ? <p className="del"><img src={BIN_IMG} alt="delete"
                     onClick={()=>{handleDeleteContract(index)}}
                     /></p> : <p className="block"><img src={BLOCKCHAIN_IMG} alt="block"
-                    onClick={()=>{window.open(contract.tx_link, "_blank")}}
+                    onClick={()=>{window.open(`https://amoy.polygonscan.com/tx/${contract.tx_hash}`, "_blank")}}
                     /></p>
                     }
                 </div>
