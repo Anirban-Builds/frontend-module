@@ -48,6 +48,7 @@ const ProjectSPM = ({popup, msg, setPopup, setMsg}) => {
             setPopup(true)
             setMsg("Project run error 😨")
             setLoading(false)
+            setfileState(true)
             setResultstatus(false)
             return
         }

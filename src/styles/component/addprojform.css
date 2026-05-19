@@ -9,8 +9,6 @@
 .addprojform{
   position: relative;
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
   flex-direction: column;
   gap: 25px;
   width: 100%;
@@ -113,7 +111,7 @@
 }
 
 .fetch-repo-btn{
-  color: var(--bg);
+  color: #fff;
   font-weight: 700;
   background-color: #0fdacf;
   border-radius: 6px;
@@ -123,7 +121,11 @@
 }
 
 .fetch-repo-btn:hover{
-  background-color: #0c0404;
+  background-color: #07918a;
+}
+
+.dark .fetch-repo-btn:hover{
+  background-color: #4de6de;
 }
 
  .form-close-btn {
@@ -173,7 +175,6 @@
   align-items: center;
   gap: 4px;
   border: 1px solid var(--text);
-  color: var(--text);
   padding: 6px 12px;
   border-radius: 999px;
   background: var(--bg);
@@ -189,9 +190,8 @@
 
 .icon{
   position: relative;
-  border: 1px solid #000;
-  background : #fff;
-  color: #000;
+  border: 1px solid var(--text);
+  background : var(--bg);
   border-radius: 50%;
   width: 18px;
   height: 18px;
@@ -204,7 +204,7 @@
 .icon::after {
   position: absolute;
   content: '';
-  background: #000;
+  background: var(--text);
   width: 10px;
   height: 0.5px;
   top: 50%;

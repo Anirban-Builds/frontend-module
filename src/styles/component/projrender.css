@@ -1,8 +1,7 @@
 .projpage-layout {
-    width : 97%;
+    width : 100%;
     background: var(--bg);
     color: var(--text);
-    margin: 0 auto;
     min-height: 100vh;
     transition: transform 0.4s ease;
     display: flex;
@@ -24,7 +23,7 @@
 }
 
 .proj-main-div{
-    /* border: 1px solid #ccc; */
+    border: 1px solid #ccc;
     border-radius: 20px;
     width: 99%;
     padding: 0.5rem;
@@ -66,7 +65,7 @@
 .fullsc-div{
     position: fixed;
     top: 1rem;
-    right: 2.5rem;
+    right: 1rem;
     z-index: 4;
 }
 

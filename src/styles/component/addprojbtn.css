@@ -1,11 +1,24 @@
 .addprojbtn {
-  background-color: #007bff;
-  font-size: 16px;
+  background: rgb(109, 212, 253);
+  font-size: 18px;
   font-weight: 200;
   color: #fff;
   padding: 10px 16px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 0 0px 4px rgba(0, 123, 255, 0.55);
+}
+
+.addprojbtn:hover{
+  background: rgb(61, 125, 235);
+  box-shadow: 0 0 8px 4px rgb(0, 0, 0, 0.2);
+}
+
+.dark .addprojbtn{
+   background: rgb(57, 119, 225);
+}
+
+.dark .addprojbtn:hover{
+  background: rgb(109, 212, 253);
+  box-shadow: 0 0 4px 4px rgb(255, 255, 255, 0.2);
 }

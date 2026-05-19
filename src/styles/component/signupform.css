@@ -7,11 +7,15 @@
   width: 100%;
   height: 88vh;
   margin: auto;
-  background: var(--bg);
+  background-color: #fff;
   color: var(--text);
   padding: 20px 30px;
   border-radius: 30px;
   border: 1px solid #ccc;
+}
+
+.dark .signup-div{
+  background-color: #0e1b29;
 }
 
 .signup-div .close-btn {
@@ -29,6 +33,11 @@
   font-weight: 700;
   align-items: center;
   justify-content: center;
+}
+
+.signup-div .close-btn:hover{
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
 }
 
 .signup-div .projcoverimg{
@@ -294,12 +303,20 @@
   }
 
   .signup-div .textfield input,
-  .signup-div .emailfield input,
-  .signup-div .pwdfield input {
+  .signup-div .emailfield input{
     margin-left: 0;
     width: 100%;
     font-size: 15px;
   }
+
+  .signup-div .pwdfield-inner {
+      width: 100%;
+      margin-left: 0;
+  }
+
+ .pwdfield-inner input{
+  margin-left: 0;
+ }
 
   .signup-div .signup-btn button,
   .github-login-signup button {

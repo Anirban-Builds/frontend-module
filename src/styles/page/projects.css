@@ -1,24 +1,38 @@
 .project{
     background-color: var(--bg);
-    width: 90%;
+    width: 100%;
     height: auto;
     min-height: 100vh;
-    margin-left: 80px;
     padding-bottom: 100px;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
 }
-.ham{
-    position: fixed;
-    top: 12px;
-    left: 1px;
-    z-index: 5;
-    width: auto;
-    height: auto;
-    background: transparent;
+
+.ham {
+   position: fixed;
+   z-index: 5;
+   background: transparent;
+}
+
+.ham .ham-menu{
+  top: 8px;
+  left: 12px;
+}
+
+.ham .ham-menu.open{
+  background: url("../../assets/images/1153879.jpg");
+}
+
+.dark .ham .ham-menu.open, .dark .ham .navbar{
+  background: url("../../assets/images/1153879-dark.jpg");
 }
 
 .project h1, p{
-    margin-left: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 1rem;
 }
 
 .project h1{
@@ -59,28 +73,27 @@
 
 .projcarddiv
 {
-    margin: 75px 85px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding-left: 45px;
-    gap: 40px 60px;
+  width: 95%;
+  margin: 10px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 30px 20px;
+  padding-left: 2.25rem;
 }
 
-.projcarddiv .not-found{
-  height: 50px;
+.not-found{
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 55px;
   font-size: 1.4rem;
   color: var(--text);
   width: 100%;
 }
 
 .projsearchBar{
-  margin-top: 40px;
+  margin: 30px auto;
+  margin-bottom: 20px;
   display: flex;
   width: 100%;
   justify-self: center;
@@ -92,6 +105,7 @@
   justify-content: center;
   padding: 10px 0;
   z-index: 3;
+  align-items: center;
 }
 
 .dark .project,
@@ -104,6 +118,7 @@
 .projsearchBar.scrolled{
     box-shadow: 0 4px 6px -2px rgba(0,0,0,0.3);
     border-radius: 0 0 12px 12px;
+    justify-content: flex-end;
 }
 
 .dark .projsearchBar.scrolled{
@@ -112,15 +127,18 @@
 }
 
 .projsearchBar input{
-  width: 88%;
+  width: 93%;
   height: 55px;
-  padding: 0.5rem;
   font-size: 1rem;
   border-radius: 999px;
   border: 1px solid #ccc;
   background-color: var(--bg);
   padding : 0.5rem 1rem 0.5rem 2.8rem;
   color: var(--text);
+}
+
+.projsearchBar.scrolled input{
+  margin-right: 20px;
 }
 
 .projsearchBar input:hover{
@@ -137,15 +155,20 @@
 
 .projsearchBar span {
   position: absolute;
-  left: 100px;
-  top: 56%;
+  left: 62px;
+  top: 54%;
   transform: translateY(-50%);
   pointer-events: none;
   z-index: 2;
   font-size: 1.2rem;
 }
 
-.light .projsearchBar span svg {
+.projsearchBar.scrolled span{
+  left: 100px;
+  top: 54%;
+}
+
+.projsearchBar span svg {
   fill: #15020235;
 }
 
@@ -160,6 +183,10 @@
   margin-top: 5px;
   display: flex;
   flex-direction: column;
+}
+
+.projsearchBar.scrolled .srch-filter{
+    right: 50px;
 }
 
 .projsearchBar .srch-filter .filter-btn{
@@ -182,7 +209,7 @@
 .projsearchBar .search-cancelbtn{
     position: absolute;
     top: 50%;
-    right: 150px;
+    right: 170px;
     transform: translateY(-50%);
     border-radius: 50%;
     height: 30px;
@@ -192,6 +219,10 @@
     font-weight: 600;
     background-color: #140202a5;
     cursor: pointer;
+}
+
+.projsearchBar.scrolled .search-cancelbtn{
+  right: 120px;
 }
 
  .chkbox-dd-menu{
@@ -341,45 +372,30 @@
 }
 
 @media (max-width: 768px) {
-  .project {
-    position: relative;
-    width: 100%;
-    margin-left: 0;
-    border-radius: 0;
-    padding: 0 15px 80px;
-  }
 
   .ham .ham-menu{
-    position: fixed;
-    border: 1px solid var(--text);
-    background: var(--bg);
     top: 12px;
-    left: 20px;
-    width: 48px;
-    height: 48px;
+    left: 12px;
+    width: 50px;
+    height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4px;
-    cursor: pointer;
-  }
-
-  .ham .ham-menu span{
-    background-color: var(--text);
   }
 
    .projsearchBar.scrolled {
-    padding-left: 50px;
+    padding-left: 60px;
   }
 
    .projsearchBar input {
-    width: 95%;
+    width: 90%;
     height: 50px;
   }
 
   .projsearchBar span {
-    left: 1rem;
+    left: 1.8rem;
     top: 2.3rem;
     font-size: 1rem;
   }
@@ -393,7 +409,7 @@
   }
 
   .projsearchBar.scrolled span {
-    left: 4rem;
+    left: 5rem;
     font-size: 1rem;
   }
 
@@ -407,9 +423,8 @@
     right: 30px;
   }
 
-   .project .projcarddiv {
-    margin: 40px 10px;
-    padding-left: 0;
+  .projcarddiv {
+    padding-left: 0.25rem;
     justify-content: center;
   }
 
@@ -425,7 +440,7 @@
   width: 92vw;
   }
 
-   .project h1,
+  .project h1,
   .project p {
     margin-left: 10px;
     justify-content: flex-start;

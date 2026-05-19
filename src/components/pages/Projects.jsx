@@ -205,13 +205,13 @@ const Projects = () => {
             filter = {!Object.values(tags).every(v => !v)}
             />
         </div>
-        <div className="projcarddiv">
             {!fetchdone ? "" :
             project.length === 0 ?
             (<div className="not-found">
             No Projects Found
             </div>):
-            (<ProjCardRender // project card
+            (<div className="projcarddiv">
+            <ProjCardRender // project card
             project={project}
             deleteStatus={onProjDelfunc}
             setTags={setTags}
@@ -219,8 +219,10 @@ const Projects = () => {
             tags={clrtagval}
             onProjStarfunc={onProjStarfunc}
             onProjForkfunc={onProjForkfunc}
-            />)}
-        </div>
+            />
+            </div>
+            )}
+
 {totalPages > 1 && (
   <div className="pagination">
     {Array.from({ length: totalPages }, (_, i) => i + 1)

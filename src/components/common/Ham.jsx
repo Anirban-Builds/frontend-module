@@ -29,7 +29,7 @@ const Ham = ({state, setState}) => {
   />
 
         <nav className="navbar">
-            <ul className={`nav-items ${open ? "open" : ""}`}>
+            <ul className={`nav-items ${state ? "open" : ""}`}>
             <li><Link to="/" className="home">Home</Link></li>
             <li><Link to="/projects" className="projects">Projects</Link></li>
             {user.userExists?

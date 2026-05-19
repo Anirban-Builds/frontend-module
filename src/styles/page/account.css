@@ -1,15 +1,36 @@
 .account-layout{
-    background: var(--bg);
+    background: #fff;
     color: var(--text);
-    width: 90%;
+    width: 100%;
     min-height: 100vh;
     height: auto;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    transition: transform 0.4s ease;
     overflow-x: hidden;
+}
+
+.dark .account-layout{
+  background-color: #0e1b29be;
+}
+
+.ham-acc {
+   position: fixed;
+   z-index: 5;
+   background: transparent;
+}
+
+.ham-acc .ham-menu{
+  left: 14px;
+  border: 1px solid #ccc;
+}
+
+.ham-acc .ham-menu.open{
+  background: url("../../assets/images/1153879.jpg");
+}
+
+.dark .ham-acc .ham-menu.open, .dark .ham-acc .navbar{
+  background: url("../../assets/images/1153879-dark.jpg");
 }
 
 .usr-img-div{
@@ -86,32 +107,21 @@
   border: 1px solid #ccc;
 }
 
-.light .usr-div input{
+.usrname-div, .usrmail-div{
+  display: inline;
+}
+
+.usrname-div input, .usrmail-div input{
+  width: 30rem;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 2%;
+  font-size: 16px;
   background-color: #eee;
 }
 
-.usrname-div{
-  display: inline;
-}
-
-.usrname-div input{
-  width: 30rem;
-  height: 40px;
-  border-radius: 10px;
-  padding-left: 2%;
-  font-size: 16px;
-}
-
-.usrmail-div{
-  display: inline;
-}
-
-.usrmail-div input{
-  width: 30rem;
-  height: 40px;
-  border-radius: 10px;
-  padding-left: 2%;
-  font-size: 16px;
+.dark .usrname-div input,.dark .usrmail-div input{
+  background-color: #35353f;
 }
 
 .lbl-text{
@@ -187,6 +197,22 @@
   border: 1px solid #ccc;
 }
 
+.dark .gh-link-div button,
+.dark .gh-linked-div button,
+.dark .upd-pwd-btn button,
+.dark .del-acc-div button,
+.dark .logout-btn button{
+  background: #12121f;
+}
+
+.dark .gh-link-div button:hover,
+.dark .gh-linked-div button:hover,
+.dark .upd-pwd-btn button:hover,
+.dark .del-acc-div button:hover,
+.dark .logout-btn button:hover{
+  background: #27272f;
+}
+
 .acc-del-form {
   position: fixed;
   top: 0;
@@ -236,7 +262,6 @@
   z-index: 3;
 }
 
-
 .del-acc-div{
   flex-direction: row;
   gap: 1rem;
@@ -263,6 +288,7 @@
   position: relative;
   top: -4rem;
 }
+
 .usr-img-upd button{
   z-index: 2;
   height: 3rem;
@@ -284,18 +310,13 @@
 
 @media (max-width: 768px) {
 
-  .account-layout {
-    width: 95%;
-    border-radius: 16px;
-  }
-
   .usr-img-div {
     height: 160px;
     border-radius: 14px;
   }
 
   .usr-img-upd {
-    top: -3rem;
+    top: -3.5rem;
   }
 
   .usr-img-upd button {
@@ -307,12 +328,14 @@
   .usr-info-div {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .usr-div {
     width: 100%;
     margin-top: 20px;
     gap: 1rem;
+    padding: 10px;
     align-items: center;
   }
 
@@ -320,37 +343,35 @@
   .usrmail-div,
   .gh-link-div,
   .gh-linked-div {
-    margin-left: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .usrname-div input,
   .usrmail-div input {
-    width: 90%;
-    max-width: 100%;
+    width: 100%;
     font-size: 15px;
   }
 
-  .lbl-text {
-    margin-right: 0.6rem;
+  .gh-link-div{
+    padding-left: 0;
   }
 
   .gh-link-div button {
-    width: 90%;
+    width: 100%;
   }
 
   .gh-linked-div {
     flex-direction: row;
     gap: 0.7rem;
-    margin-left: 20%;
     align-items: center;
+    padding-left: 0;
   }
 
   .gh-linked-div .linked-btn {
-    width: 60%;
+    width: 90%;
   }
 
   .gh-linked-div .unlink-btn {
@@ -360,34 +381,55 @@
 
   .logout-btn {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 0;
   }
 
   .logout-btn button {
-    width: 140px;
+    width: 50%;
     height: 45px;
-    font-size: 16px;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    font-size: 16px;
+    border-radius: 30px;
   }
 
   .upd-pwd-btn{
   display: flex;
   flex-direction: row;
-  margin-left: 2%;
+  justify-content: center;
   gap: 1rem;
+  padding-left: 0;
+  width: 100%;
 }
 
-  .ham-acc .ham-menu{
-    border: 1px solid var(--text);
-    background-color: var(--bg);
-    top: 13px;
-    left: 13px;
-  }
+.upd-pwd-btn button{
+  width: 100%;
+}
 
-  .ham-acc .ham-menu span{
-    background-color: var(--text)
-  }
+.del-acc-div{
+  padding-left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.del-acc-div button{
+  width: 100%;
+}
 
+.ham-acc .ham-menu{
+    top: 15px;
+    left: 7px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
