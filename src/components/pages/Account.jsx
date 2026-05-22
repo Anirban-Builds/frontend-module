@@ -18,6 +18,7 @@ import LOGOUT_LOGO from "../../assets/images/power-off-solid-full.svg"
 import GithubLogo from "../../assets/images/github-logo.png"
 import UpdPwdForm from "../common/UpdPwdform"
 import OtpForm from "../common/otpform"
+import { Loading } from "../common/Loading"
 import "../../styles/page/account.css"
 
 const Account = () => {
@@ -33,6 +34,7 @@ const Account = () => {
     const [otp, setOtp] = useState([])
     const [otperr, setOtperr] = useState(false)
     const [otpsent, setOtpsent] = useState(false)
+    const [loading, setLoading] = useState(false)
     const location = useLocation()
 
     const inputRef = useRef(null)
@@ -72,6 +74,7 @@ const Account = () => {
     })
 
     const LinkGHaccount = AsyncHandler(async()=>{
+        setLoading(true)
         localStorage.setItem("user", JSON.stringify({...user, islinking:true}))
         window.location.assign(githubAuthURL)
         // return back from login page to account page
@@ -142,6 +145,7 @@ const Account = () => {
         setMsg("Github account Linked successfully ✅🔗!")
         setPopup(true)
         localStorage.removeItem("user")
+        setLoading(false)
         return
     })
     fetchGithubData()
@@ -281,10 +285,10 @@ const Account = () => {
                     onClick={() =>{
                         if(popup) setPopup(false)
                         setTimeout(() => GHPopup(), 1)}}
-                    > Github Account linked
+                    > {loading ? <Loading/>:<>Github Account linked
                     <img
                     src={user.avatar}
-                    />
+                    /></>}
                     </button>
                     <button className="unlink-btn"
                     onClick={
@@ -298,8 +302,8 @@ const Account = () => {
                 (<div className="gh-link-div">
                     <button
                     onClick={LinkGHaccount}
-                    >Link with
-                    <img src={GithubLogo} alt="" />
+                    >{loading ? <Loading/> :<> Link with
+                    <img src={GithubLogo} alt="" /></>}
                     </button>
                 </div>)}
                 {user.usertype?.[0] ?

@@ -1,10 +1,19 @@
 import { useEffect } from "react"
-import { useAccount } from "wagmi"
+import { useAccount, useSwitchChain } from "wagmi"
+import { polygonAmoy } from "wagmi/chains"
 import { ConnectButton } from "@rainbow-me/rainbowkit"
 import "../../styles/component/connectbtn.css"
 
 const walletConnectButton = ({setWallet}) => {
   const { isConnected, address } = useAccount()
+  const { switchChain } = useSwitchChain()
+
+  useEffect(() => {
+  if (isConnected) {
+    switchChain({ chainId: polygonAmoy.id })
+  }
+}, [isConnected])
+
   useEffect(()=>{
           setWallet({ isConnected, address })
         },

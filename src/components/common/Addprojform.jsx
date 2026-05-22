@@ -38,7 +38,13 @@ const Addprojform = ({setState, onProjAdd}) => {
     const handleFetchRepo = AsyncHandler(async(url)=>{
         setLoading(true)
         setLoadingtext("Fetching Repo")
-         const {image, repo, deployLink} = await FetchRepoDetails(url)
+        if(!projRepo){
+        usePopup("Enter Repo link 😥", true)
+        setLoading(false)
+        setLoadingtext('')
+        return
+        }
+        const {image, repo, deployLink} = await FetchRepoDetails(url)
         if(!image || !repo || !deployLink){
             usePopup("Repo fetch failure 👎🏻", true)
             setLoading(false)

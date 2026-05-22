@@ -8,14 +8,15 @@ import createTextFile from "../utils/createTxtFile"
 import AsyncHandler from "../utils/AsyncHandler"
 import COIN_IMG  from "../assets/images/coin.png"
 import "@rainbow-me/rainbowkit/styles.css"
-import "../projects/styles/contractdapp.css"
 import FILE_IMG from "../assets/images/file.png"
 import BIN_IMG from "../assets/images/bin.png"
 import CORRECT_IMG from "../assets/images/correct.png"
 import WRONG_IMG from "../assets/images/wrong.png"
 import BLOCKCHAIN_IMG from "../assets/images/blockchain.png"
+import RESET_PNG from "../assets/images/reset.png"
+import "../projects/styles/contractdapp.css"
 
-const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
+const ProjContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
     const [wallet, setWallet] = useState({ isConnected: false, address: null })
     const[text, setText] = useState("")
     const[email, setEmail] = useState("")
@@ -164,13 +165,9 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
         })
         if(!rese.ok){
             setLoading(prev => ({ ...prev, [3]: false }))
-            setCode("")
-            setEmail("")
-            setContractId("")
-            navigate("/projects/blockchain-contract-dapp", {
-            replace : true,
-            state: { msg: "Failed to sign contract 😨", success: false }
-            })
+            setPopup(true)
+            setFailureState(true)
+            setMsg("Failed to sign contract 😨")
             return
         }
         setCode("")
@@ -312,6 +309,9 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
         {wallet.isConnected ? <div className="projcontdapp-list-div">
             <div className={`projcontdapp-list-head-div ${listexpand ? "open" : ""}`}>
                 <h3>Contract list</h3>
+                <button className="reload-btn"
+                onClick={()=>{if(listexpand) handleListContract()}}
+                ><img src={RESET_PNG} alt="reload" /></button>
                 <button
                 onClick={()=>{
                     if(!listexpand) handleListContract()
@@ -366,4 +366,4 @@ const projContractDapp = ({popup, setPopup, setMsg, setFailureState})=>{
     )
 }
 
-export default projContractDapp
+export default ProjContractDapp

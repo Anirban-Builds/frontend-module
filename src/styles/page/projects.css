@@ -28,7 +28,7 @@
   background: url("../../assets/images/1153879-dark.jpg");
 }
 
-.project h1, p{
+.project h1, .project p{
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
