@@ -123,6 +123,20 @@
     align-items: center;
 }
 
+.projcontdapp-list-head-div button img{
+    width: 45px;
+    height: 45px;
+    filter: invert(23%) sepia(100%) saturate(3000%) hue-rotate(220deg) brightness(90%);
+}
+
+.dark .projcontdapp-list-head-div button img{
+    filter: invert(72%) sepia(99%) saturate(2253%) hue-rotate(120deg) brightness(101%) contrast(101%);
+}
+
+.projcontdapp-list-head-div .reload-btn{
+    margin-left: auto;
+}
+
 .projcontdapp-sign-header button > div, .projcontdapp-list-head-div button > div{
     position: relative;
     width: 35px;

@@ -1,0 +1,14 @@
+.spinner{
+  width: 35px;
+  height: 35px;
+  animation: rotate 1.4s linear infinite;
+}
+.spinner circle {
+  fill: none;
+  stroke: #4caf50;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.4s ease-in-out infinite;
+}

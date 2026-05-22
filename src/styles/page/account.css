@@ -197,6 +197,11 @@
   border: 1px solid #ccc;
 }
 
+.gh-link-div button .spinner, .gh-linked-div button .spinner{
+    height: 30px;
+    width: 30px;
+}
+
 .dark .gh-link-div button,
 .dark .gh-linked-div button,
 .dark .upd-pwd-btn button,

@@ -1,0 +1,120 @@
+.projmcpnews-main-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    gap : 10px;
+}
+
+.projmcpnews-input-div{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.projmcpnews-input-div textarea{
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    min-height: 40px;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    resize: none;
+    max-height: 350px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: var(--text);
+    background-color: #ffe;
+    line-height: 1.5;
+}
+
+.projmcpnews-input-div.loading textarea{
+    cursor: not-allowed;
+    color: #ddd;
+}
+
+.dark .projmcpnews-input-div.loading textarea{
+    cursor: not-allowed;
+    color: #444;
+}
+
+
+.dark .projmcpnews-input-div, .dark .projmcpnews-input-div textarea{
+    background: #27272f;
+}
+
+.projmcpnews-input-div button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(225, 118, 65);
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.projmcpnews-input-div button .spinner{
+    width: 40px;
+    height: 40px;
+}
+
+.projmcpnews-input-div button .spinner circle{
+    stroke: #fff;
+}
+
+.projmcpnews-input-div button:hover{
+    background: rgb(192, 102, 56);
+}
+
+.dark .projmcpnews-input-div button{
+    background: rgb(192, 102, 56);
+}
+
+.dark .projmcpnews-input-div button:hover{
+    background: rgb(225, 118, 65);
+}
+
+.projmcpnews-input-div button img{
+    height: 30px;
+    width: 30px;
+    filter: invert(1);
+    transform: rotate(90deg);
+}
+
+.projmcpnews-res-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 4px 2px rgb(0, 0, 0, 0.3);
+    margin-top: 1rem;
+}
+
+.dark .projmcpnews-res-div{
+    background: #0a0e12;
+    box-shadow: 0 0 4px 2px rgb(255, 255, 255, 0.3);
+}
+
+.projmcpnews-res-div a {
+    color: #000;
+    text-decoration: none;
+}
+
+.dark .projmcpnews-res-div a{
+    color: #fff;
+}
